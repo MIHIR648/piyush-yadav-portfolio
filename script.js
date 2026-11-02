@@ -9,7 +9,7 @@
           company: "d-vivid.consultant",
           title: "AI Engineer & Global Education Ads",
           desc: "Dynamic retention-focused editing with kinetic typography, sound effects & pacing.",
-          videoSrc: "./assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov.mp4",
+          videoSrc: "assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4",
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
           cardClass: "card-anisotropic-metal",
           hasGlint: true,
@@ -21,7 +21,7 @@
           company: "piyushyadav.studio",
           title: "High-Conversion Commercial & Study Ads",
           desc: "Produced for D Vivid Consultant. Kinetic typography, international study campaigns & dynamic sound design.",
-          videoSrc: "./assets/videos/295-Hindi-Germany.mov",
+          videoSrc: "assets/videos/295-Hindi-Germany.mp4",
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4",
           cardClass: "card-focus-violet",
           hasGlint: false,
@@ -33,7 +33,7 @@
           company: "motion.compositing",
           title: "3D Camera Tracking & Motion Graphics",
           desc: "Complex 3D camera tracking, volumetric lighting, and particle dynamics composited for high-impact reels.",
-          videoSrc: "./assets/videos/3d_project.mov",
+          videoSrc: "assets/videos/3d_project.mp4",
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
           cardClass: "card-emerald-metal",
           hasGlint: false,
@@ -45,7 +45,7 @@
           company: "piyush.showreel",
           title: "Director's Cut // 2026 Showreel",
           desc: "Pacing masterclass, rhythmic match-cutting, and DaVinci Resolve color grading.",
-          videoSrc: "./assets/videos/Timeline_1.mov",
+          videoSrc: "assets/videos/Timeline_1.mp4",
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
           cardClass: "card-dark-obsidian",
           hasGlint: false,
@@ -57,7 +57,7 @@
           company: "g7edu.global",
           title: "Human Stories & Student Journeys",
           desc: "Slow-burn emotional pacing with organic natural lighting color grades for G7Edu Global campaigns.",
-          videoSrc: "./assets/videos/Documentry_work.mov",
+          videoSrc: "assets/videos/Documentry_work.mp4",
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
           cardClass: "card-dark-obsidian",
           hasGlint: false,
@@ -128,7 +128,22 @@
 
           if (diff === 0) {
             el.classList.add('pos-center');
-            if (video) video.play().catch(() => {});
+            if (video) {
+              video.muted = true; // Crucial for Vercel & Chrome/Safari autoplay policy
+              const playPromise = video.play();
+              if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                  // If Vercel or QuickTime codec fails, instantly heal with CDN streaming source
+                  const item = CARDS_DATA[idx];
+                  if (item && video.src !== item.fallbackSrc) {
+                    video.src = item.fallbackSrc;
+                    video.muted = true;
+                    video.load();
+                    video.play().catch(() => {});
+                  }
+                });
+              }
+            }
           } else if (diff === -1) {
             el.classList.add('pos-left');
             if (video) video.pause();
@@ -387,20 +402,57 @@
 
       function openCinemaModal(item) {
         if (!modal || !modalVideo) return;
-        modalVideo.src = item.videoSrc;
-        modalVideo.onerror = () => {
-          if (item.fallbackSrc) {
-            modalVideo.src = item.fallbackSrc;
-            modalVideo.load();
-            modalVideo.play().catch(() => {});
+        
+        modalVideo.innerHTML = '';
+        
+        let healed = false;
+        function healModalVideo() {
+          if (healed) return;
+          healed = true;
+          modalVideo.src = item.fallbackSrc;
+          modalVideo.load();
+          modalVideo.play().catch(() => {});
+        }
+
+        modalVideo.onerror = healModalVideo;
+
+        // Fallback timer: If Vercel returns 404, LFS pointer or codec stall
+        const fallbackTimer = setTimeout(() => {
+          if (!healed && (modalVideo.error || modalVideo.networkState === 3 || modalVideo.readyState === 0)) {
+            healModalVideo();
           }
+        }, 1500);
+
+        modalVideo.onloadeddata = () => {
+          clearTimeout(fallbackTimer);
         };
+
+        const mp4Src = document.createElement('source');
+        mp4Src.src = item.videoSrc;
+        mp4Src.type = 'video/mp4';
+
+        const movSrc = document.createElement('source');
+        movSrc.src = item.videoSrc.replace('.mp4', '.mov');
+        movSrc.type = 'video/quicktime';
+
+        const cdnSrc = document.createElement('source');
+        cdnSrc.src = item.fallbackSrc;
+        cdnSrc.type = 'video/mp4';
+
+        modalVideo.appendChild(mp4Src);
+        modalVideo.appendChild(movSrc);
+        modalVideo.appendChild(cdnSrc);
+
+        modalVideo.load();
+        modalVideo.play().catch(() => {
+          healModalVideo();
+        });
+
         if (modalTag) modalTag.textContent = item.tag;
         if (modalTitle) modalTitle.textContent = item.title;
         if (modalDesc) modalDesc.textContent = item.desc;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
-        modalVideo.play().catch(() => {});
       }
 
       function closeCinemaModal() {
@@ -420,7 +472,42 @@
         if (e.key === 'Escape') closeCinemaModal();
       });
 
-      // Initial card position setup
+      // =============================================================================
+      // ACTIVE VIDEO AUTO-HEALER FOR VERCEL & QUICKTIME DECODING
+      // =============================================================================
+      function initBackgroundVideoHealers() {
+        const cardElements = document.querySelectorAll('.card-3d-item');
+        cardElements.forEach((card, idx) => {
+          const video = card.querySelector('video');
+          const item = CARDS_DATA[idx];
+          if (!video || !item) return;
+
+          let healed = false;
+          function healVideo() {
+            if (healed) return;
+            healed = true;
+            video.src = item.fallbackSrc;
+            video.muted = true;
+            video.load();
+            if (idx === activeIndex) {
+              video.play().catch(() => {});
+            }
+          }
+
+          video.addEventListener('error', healVideo);
+          const sources = video.querySelectorAll('source');
+          sources.forEach(s => s.addEventListener('error', healVideo));
+
+          setTimeout(() => {
+            if (!healed && (video.error || video.networkState === 3 || (idx === activeIndex && video.readyState === 0))) {
+              healVideo();
+            }
+          }, 1500);
+        });
+      }
+
+      // Initial card position setup & video healer activation
       update3DPositions();
+      initBackgroundVideoHealers();
 
     })();
