@@ -455,6 +455,16 @@
         document.body.style.overflow = 'hidden';
       }
 
+      window.openCinemaModalBySrc = function(src, tag, title, desc) {
+        openCinemaModal({
+          videoSrc: src,
+          fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4",
+          tag: tag || "Client Project",
+          title: title || "Video Showcase",
+          desc: desc || "High-retention commercial video edited by Piyush Yadav."
+        });
+      };
+
       function closeCinemaModal() {
         if (!modal || !modalVideo) return;
         modal.classList.remove('active');
@@ -503,6 +513,18 @@
               healVideo();
             }
           }, 1500);
+        });
+
+        // Attach auto-healers to all video vault players
+        const vaultVideos = document.querySelectorAll('.video-frame-container video');
+        vaultVideos.forEach(v => {
+          v.addEventListener('error', () => {
+            const fallback = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4";
+            if (v.src !== fallback) {
+              v.src = fallback;
+              v.load();
+            }
+          });
         });
       }
 

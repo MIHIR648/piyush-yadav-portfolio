@@ -445,21 +445,70 @@
       transition: opacity 0.3s;
     }
 
-    /* Video Background inside Cards */
+    /* Video Background inside Cards: High Visibility & Vibrant Clarity */
     .card-video-bg {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.28;
-      transition: opacity 0.35s ease;
-      z-index: 1;
+      opacity: 0.85; /* Changed from 0.28 to 0.85 - bright, vivid & clearly visible! */
+      transition: opacity 0.35s ease, filter 0.35s ease;
+      z-index: 2;
     }
 
-    .card-3d-item:hover .card-video-bg,
     .card-3d-item.pos-center .card-video-bg {
-      opacity: 0.65;
+      opacity: 1; /* Center active card has 100% video visibility! */
+    }
+
+    .card-3d-item.pos-left .card-video-bg,
+    .card-3d-item.pos-right .card-video-bg {
+      opacity: 0.78;
+    }
+
+    /* Video Overlay Gradient: Guarantees text readability while keeping video 100% visible */
+    .card-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8, 10, 16, 0.94) 0%, rgba(8, 10, 16, 0.35) 45%, rgba(8, 10, 16, 0.1) 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Center Card Play Indicator Pill */
+    .center-card-play-pill {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      padding: 0.65rem 1.35rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(6, 182, 212, 0.45);
+      z-index: 6;
+      pointer-events: none;
+      transition: transform 0.2s var(--ease-spring), background 0.2s;
+    }
+
+    .card-3d-item:not(.pos-center) .center-card-play-pill {
+      display: none;
+    }
+
+    .card-3d-item.pos-center:hover .center-card-play-pill {
+      transform: translate(-50%, -50%) scale(1.08);
+      background: rgba(6, 182, 212, 0.95);
+      color: #000;
+      box-shadow: 0 15px 40px rgba(6, 182, 212, 0.6);
     }
 
     .card-content-layer {
@@ -725,6 +774,145 @@
     @media (max-width: 768px) {
       .hero-bottom-controls { padding: 0 1.25rem; flex-wrap: wrap; gap: 1rem; justify-content: center; }
       .bottom-left-toggles { display: none; }
+    }
+
+    /* =============================================================================
+       SECTION: FEATURED VIDEO WORKS & REELS (CLIENT SHOWCASE VAULT)
+       ============================================================================= */
+    .video-vault-section {
+      background: #090b10;
+      color: #f8fafc;
+      padding: 6rem 2rem 5rem;
+      position: relative;
+      z-index: 25;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .video-vault-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 2rem;
+    }
+
+    .video-card-large {
+      grid-column: span 6;
+      background: rgba(18, 21, 30, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s var(--ease-spring), border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .video-card-small {
+      grid-column: span 4;
+      background: rgba(18, 21, 30, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s var(--ease-spring), border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .video-card-large:hover, .video-card-small:hover {
+      transform: translateY(-6px);
+      border-color: rgba(6, 182, 212, 0.5);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(6, 182, 212, 0.15);
+    }
+
+    @media (max-width: 992px) {
+      .video-card-large, .video-card-small { grid-column: span 6; }
+    }
+
+    @media (max-width: 680px) {
+      .video-card-large, .video-card-small { grid-column: span 12; }
+    }
+
+    .video-frame-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000000;
+      overflow: hidden;
+    }
+
+    .video-frame-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-info-padding {
+      padding: 1.75rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .video-tag-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .video-card-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      line-height: 1.25;
+    }
+
+    .video-card-desc {
+      font-size: 0.92rem;
+      color: #94a3b8;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+    }
+
+    .video-meta-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: #cbd5e1;
+    }
+
+    .btn-play-modal-trigger {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-play-modal-trigger:hover {
+      background: var(--accent-cyan);
+      color: #000000;
+      border-color: var(--accent-cyan);
     }
 
     /* =============================================================================
@@ -1129,7 +1317,8 @@
     <div class="center-floating-pill">
       <span class="pill-sparkle-icon">✦</span>
       <ul class="pill-nav-links">
-        <li><a href="#hero" class="pill-nav-link active">Featured Work</a></li>
+        <li><a href="#hero" class="pill-nav-link active">3D Showcase</a></li>
+        <li><a href="#videos" class="pill-nav-link">Video Vault</a></li>
         <li><a href="#experience" class="pill-nav-link">Experience</a></li>
         <li><a href="#voiceover" class="pill-nav-link">Voice Studio</a></li>
         <li><a href="#skills" class="pill-nav-link">Skills</a></li>
@@ -1286,7 +1475,7 @@
       </div>
 
       <!-- Center Explore Pill -->
-      <a href="#experience" class="btn-explore-collection">
+      <a href="#videos" class="btn-explore-collection">
         <span>Explore the collection</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="6 9 12 15 18 9"/>
@@ -1309,6 +1498,193 @@
 
     </div>
 
+  </section>
+
+  <!-- =============================================================================
+       SECTION: FEATURED VIDEO WORKS & REELS (DEDICATED VIDEO VAULT)
+       ============================================================================= -->
+  <section class="video-vault-section" id="videos">
+    <div class="container-boxed">
+      
+      <div class="section-eyebrow">CLIENT PROJECTS &amp; COMMERCIAL REELS</div>
+      <h2 class="section-headline">FEATURED VIDEO VAULT</h2>
+      <p class="section-subtext">
+        Direct high-definition video showcase featuring dynamic commercial edits, kinetic motion graphics, and narrative reels produced by Piyush Yadav. Press play to watch with sound.
+      </p>
+
+      <div class="video-vault-grid">
+        
+        <!-- Video 1: D Vivid Consultant // Germany Education Ad -->
+        <div class="video-card-large">
+          <div class="video-frame-container">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/295-Hindi-Germany.mp4" type="video/mp4" />
+              <source src="assets/videos/295-Hindi-Germany.mov" type="video/mp4" />
+              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-info-padding">
+            <div>
+              <span class="video-tag-badge">Commercial Campaign</span>
+              <h3 class="video-card-title">D Vivid Consultant // Study in Germany</h3>
+              <p class="video-card-desc">High-conversion educational campaign engineered with fast kinetic pacing, dynamic subtitle motion, and punchy audio sound design.</p>
+            </div>
+            <div class="video-meta-footer">
+              <span>CLIENT: D VIVID CONSULTANT</span>
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/295-Hindi-Germany.mp4', 'Commercial Campaign', 'D Vivid Consultant // Study in Germany', 'High-conversion educational campaign engineered with fast kinetic pacing, dynamic subtitle motion, and punchy audio sound design.')">
+                <span>Cinema Mode</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 2: D Vivid Consultant // AI Engineer Promo -->
+        <div class="video-card-large">
+          <div class="video-frame-container">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4" type="video/mp4" />
+              <source src="assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov.mp4" type="video/mp4" />
+              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-info-padding">
+            <div>
+              <span class="video-tag-badge">Social 9:16 Reel</span>
+              <h3 class="video-card-title">AI Engineer &amp; Data Scientist Guidance</h3>
+              <p class="video-card-desc">Retention-optimized short-form edit tailored for Instagram Reels &amp; YouTube Shorts with hook pacing and visual popups.</p>
+            </div>
+            <div class="video-meta-footer">
+              <span>CLIENT: D VIVID CONSULTANT</span>
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4', 'Social Reel', 'AI Engineer & Data Scientist Guidance', 'Retention-optimized short-form edit tailored for Instagram Reels with hook pacing.')">
+                <span>Cinema Mode</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 3: 3D Camera Tracking & Compositing -->
+        <div class="video-card-small">
+          <div class="video-frame-container">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/3d_project.mp4" type="video/mp4" />
+              <source src="assets/videos/3d_project.mov" type="video/mp4" />
+              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-info-padding">
+            <div>
+              <span class="video-tag-badge">3D VFX &amp; Motion</span>
+              <h3 class="video-card-title">3D Camera Tracking &amp; VFX</h3>
+              <p class="video-card-desc">Advanced camera solve, volumetric lighting, and particle dynamics compositing.</p>
+            </div>
+            <div class="video-meta-footer">
+              <span>STUDIO PROJECT</span>
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/3d_project.mp4', '3D VFX', '3D Camera Tracking & VFX', 'Advanced camera solve, volumetric lighting, and particle dynamics compositing.')">
+                <span>Cinema</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 4: Director's Cut // 2026 Showreel -->
+        <div class="video-card-small">
+          <div class="video-frame-container">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/Timeline_1.mp4" type="video/mp4" />
+              <source src="assets/videos/Timeline_1.mov" type="video/mp4" />
+              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-info-padding">
+            <div>
+              <span class="video-tag-badge">Master Showreel</span>
+              <h3 class="video-card-title">Director's Cut Showreel</h3>
+              <p class="video-card-desc">Dynamic match-cutting, rhythmic timeline pacing, and DaVinci Resolve color grading.</p>
+            </div>
+            <div class="video-meta-footer">
+              <span>SHOWREEL</span>
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/Timeline_1.mp4', 'Showreel', 'Director Cut Showreel', 'Dynamic match-cutting, rhythmic timeline pacing, and DaVinci Resolve color grading.')">
+                <span>Cinema</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 5: Human Stories // Documentary Work -->
+        <div class="video-card-small">
+          <div class="video-frame-container">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/Documentry_work.mp4" type="video/mp4" />
+              <source src="assets/videos/Documentry_work.mov" type="video/mp4" />
+              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-info-padding">
+            <div>
+              <span class="video-tag-badge">Documentary</span>
+              <h3 class="video-card-title">Human Stories &amp; Journeys</h3>
+              <p class="video-card-desc">Emotional story pacing with natural lighting color grades for G7Edu Global campaigns.</p>
+            </div>
+            <div class="video-meta-footer">
+              <span>CLIENT: G7EDU</span>
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/Documentry_work.mp4', 'Documentary', 'Human Stories & Journeys', 'Emotional story pacing with natural lighting color grades for G7Edu Global campaigns.')">
+                <span>Cinema</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 6: Corporate Staff & Brand Guidance (Part 1) -->
+        <div class="video-card-large">
+          <div class="video-frame-container">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/148-Hindi-Staff_Video-.mp4" type="video/mp4" />
+              <source src="assets/videos/148-Hindi-Staff_Video-.mov" type="video/mp4" />
+              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-info-padding">
+            <div>
+              <span class="video-tag-badge">Corporate Video</span>
+              <h3 class="video-card-title">Corporate Staff &amp; Brand Orientation (Part 1)</h3>
+              <p class="video-card-desc">Multi-speaker voice audio balancing, professional lower-thirds, and clean corporate brand pacing.</p>
+            </div>
+            <div class="video-meta-footer">
+              <span>CORPORATE</span>
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/148-Hindi-Staff_Video-.mp4', 'Corporate Video', 'Corporate Staff & Brand Orientation (Part 1)', 'Multi-speaker voice audio balancing, professional lower-thirds, and clean corporate brand pacing.')">
+                <span>Cinema Mode</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 7: International Guidance & Student Orientation (Part 2) -->
+        <div class="video-card-large">
+          <div class="video-frame-container">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/155-Hindi-Staff_Video-.mp4" type="video/mp4" />
+              <source src="assets/videos/155-Hindi-Staff_Video-.mov" type="video/mp4" />
+              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-info-padding">
+            <div>
+              <span class="video-tag-badge">Educational Guidance</span>
+              <h3 class="video-card-title">International Student Orientation (Part 2)</h3>
+              <p class="video-card-desc">Bilingual Hindi/English pacing with animated highlight boxes, key takeaways, and sound effects.</p>
+            </div>
+            <div class="video-meta-footer">
+              <span>EDUCATIONAL</span>
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/155-Hindi-Staff_Video-.mp4', 'Educational Guidance', 'International Student Orientation (Part 2)', 'Bilingual Hindi/English pacing with animated highlight boxes and sound effects.')">
+                <span>Cinema Mode</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
   </section>
 
   <!-- =============================================================================
@@ -2034,6 +2410,16 @@
         document.body.style.overflow = 'hidden';
       }
 
+      window.openCinemaModalBySrc = function(src, tag, title, desc) {
+        openCinemaModal({
+          videoSrc: src,
+          fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4",
+          tag: tag || "Client Project",
+          title: title || "Video Showcase",
+          desc: desc || "High-retention commercial video edited by Piyush Yadav."
+        });
+      };
+
       function closeCinemaModal() {
         if (!modal || !modalVideo) return;
         modal.classList.remove('active');
@@ -2082,6 +2468,18 @@
               healVideo();
             }
           }, 1500);
+        });
+
+        // Attach auto-healers to all video vault players
+        const vaultVideos = document.querySelectorAll('.video-frame-container video');
+        vaultVideos.forEach(v => {
+          v.addEventListener('error', () => {
+            const fallback = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4";
+            if (v.src !== fallback) {
+              v.src = fallback;
+              v.load();
+            }
+          });
         });
       }
 
