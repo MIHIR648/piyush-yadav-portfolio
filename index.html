@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PIYUSH YADAV // Video Editor, Motion Designer &amp; Voice Artist</title>
+  
+  <!-- SEO & Meta -->
+  <meta name="description" content="Piyush Yadav — Video Editor, Motion Graphics Designer & Voice Artist based in Prahlad Nagar, Ahmedabad. Experience with D Vivid Consultant, G7Edu Global, and Astute Academy." />
+  <meta property="og:title" content="PIYUSH YADAV — 3D Video Portfolio &amp; Resume" />
+  <meta property="og:description" content="Spatial 3D UI portfolio featuring real editing projects, motion graphics, and voice-over artistry." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%230f172a'/><text x='50%' y='68%' font-family='sans-serif' font-weight='900' font-size='52' fill='%2306b6d4' text-anchor='middle'>PY</text></svg>" />
+
+  <!-- Google Fonts: Outfit, JetBrains Mono, Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- External Stylesheet Fallback -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- =============================================================================
+       INLINE STYLES: 100% Guaranteed Zero-404 Rendering on ANY Local Server / Browser
+       Faithfully replicating the 3D spatial UI from the user reference screenshot
+       ============================================================================= -->
+  <style>
+    :root {
+      --bg-stage: #eaebef;
+      --bg-stage-light: #f5f6f8;
+      --bg-dark: #07090e;
+      --bg-card-dark: #10121a;
+      --bg-card-surface: rgba(22, 25, 36, 0.75);
+      
+      --text-dark: #0a0d14;
+      --text-light: #f8fafc;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+      
+      --accent-purple: #7025d9;
+      --accent-violet: #8b5cf6;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --accent-pink: #ec4899;
+      
+      --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-display: 'Syne', 'Outfit', sans-serif;
+      
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: var(--font-sans);
+      background-color: var(--bg-stage);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      background: #eaebef;
+    }
+
+    /* Selection */
+    ::selection {
+      background: var(--accent-purple);
+      color: #fff;
+    }
+
+    /* Custom Spatial Cursor */
+    .spatial-cursor-dot {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: #0f172a;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background 0.2s;
+    }
+
+    .spatial-cursor-ring {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid rgba(15, 23, 42, 0.35);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease-out, width 0.25s, height 0.25s, border-color 0.25s;
+    }
+
+    @media (pointer: coarse) {
+      .spatial-cursor-dot, .spatial-cursor-ring { display: none; }
+    }
+
+    /* =============================================================================
+       TOP FLOATING PILL NAVBAR (FAITHFUL TO USER REFERENCE SCREENSHOT)
+       ============================================================================= */
+    .top-nav-bar {
+      position: fixed;
+      top: 24px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      pointer-events: none;
+    }
+
+    /* Top Left Badge: Piyush Yadav Identity */
+    .nav-badge-pill {
+      pointer-events: auto;
+      background: rgba(32, 35, 42, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: #f8fafc;
+      padding: 0.65rem 1.35rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      user-select: none;
+    }
+
+    .badge-dot-live {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulseGreen 2s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Center Floating Frosted Pill */
+    .center-floating-pill {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 100px;
+      padding: 0.35rem 0.45rem 0.35rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+      user-select: none;
+    }
+
+    .pill-sparkle-icon {
+      color: #0f172a;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      line-height: 1;
+      animation: rotateSlow 20s linear infinite;
+    }
+
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .pill-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.7rem;
+      list-style: none;
+    }
+
+    .pill-nav-link {
+      color: #475569;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .pill-nav-link:hover, .pill-nav-link.active {
+      color: #000;
+    }
+
+    .pill-cta-black {
+      background: #0f172a;
+      color: #ffffff;
+      border: none;
+      padding: 0.65rem 1.45rem;
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s var(--ease-spring), background 0.2s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+    }
+
+    .pill-cta-black:hover {
+      background: #000000;
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.35);
+    }
+
+    /* Right Action Button (Sound / Grid Toggle) */
+    .nav-circle-btn {
+      pointer-events: auto;
+      width: 46px;
+      height: 46px;
+      background: rgba(32, 35, 42, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 50%;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s var(--ease-spring), background 0.2s ease, color 0.2s;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-circle-btn:hover {
+      transform: scale(1.1);
+      background: #0f172a;
+      color: var(--accent-cyan);
+    }
+
+    @media (max-width: 960px) {
+      .pill-nav-links { display: none; }
+      .top-nav-bar { padding: 0 1.25rem; }
+    }
+
+    /* =============================================================================
+       HERO STAGE: 3D PERSPECTIVE CAROUSEL & GIANT EDITORIAL TYPOGRAPHY
+       ============================================================================= */
+    .stage-3d-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 100px;
+      padding-bottom: 70px;
+      overflow: hidden;
+      perspective: 1400px;
+      perspective-origin: 50% 50%;
+      background: radial-gradient(circle at 50% 25%, #ffffff 0%, #ebecee 55%, #d8dade 100%);
+    }
+
+    /* Top Ambient Studio Lighting Cone */
+    .ambient-studio-light {
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 70%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Giant Background Editorial Typography (Behind 3D Cards) */
+    .giant-background-text {
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: clamp(4.5rem, 15vw, 15rem);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.055em;
+      color: #0b0e17;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      z-index: 1;
+      opacity: 0.92;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* 3D Track Wrapper with Interactive Parallax Gyro */
+    .carousel-3d-viewport {
+      position: relative;
+      width: 100%;
+      max-width: 1360px;
+      height: 540px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+      z-index: 10;
+      cursor: grab;
+    }
+
+    .carousel-3d-viewport:active {
+      cursor: grabbing;
+    }
+
+    .carousel-3d-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* 3D Card Base Element */
+    .card-3d-item {
+      position: absolute;
+      width: 340px;
+      height: 500px;
+      border-radius: 34px;
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: 
+        transform 0.65s var(--ease-spring), 
+        opacity 0.5s ease, 
+        box-shadow 0.5s ease,
+        filter 0.5s ease;
+      transform-origin: center center;
+      overflow: hidden;
+      user-select: none;
+      box-shadow: 
+        0 30px 70px -15px rgba(0, 0, 0, 0.4), 
+        0 12px 24px -8px rgba(0, 0, 0, 0.25);
+    }
+
+    /* =============================================================================
+       CARD SURFACES: Brushed Metallic Anisotropic, Star Glint, and Violet Glow
+       ============================================================================= */
+
+    /* Metallic Brushed Anisotropic Shader for Left Card */
+    .card-anisotropic-metal {
+      background: 
+        radial-gradient(circle at 45% 45%, rgba(255, 255, 255, 0.8) 0%, transparent 45%),
+        conic-gradient(from 180deg at 50% 50%, 
+          #9ba0ab 0deg, 
+          #e5e7eb 50deg, 
+          #8a8f9c 110deg, 
+          #ffffff 180deg, 
+          #8a8f9c 250deg, 
+          #e5e7eb 310deg, 
+          #9ba0ab 360deg) !important;
+      color: #0f172a;
+    }
+
+    /* Star Glint Reflection (✦) on Brushed Metallic Card */
+    .star-glint-flare {
+      position: absolute;
+      top: 52%;
+      left: 12%;
+      width: 50px;
+      height: 50px;
+      pointer-events: none;
+      z-index: 6;
+      opacity: 0.9;
+      animation: glintShimmer 4s ease-in-out infinite;
+    }
+
+    .star-glint-flare svg {
+      width: 100%;
+      height: 100%;
+      fill: #ffffff;
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.8));
+    }
+
+    @keyframes glintShimmer {
+      0%, 100% { opacity: 0.7; transform: scale(0.9) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.15) rotate(15deg); }
+    }
+
+    /* Vibrant Royal Purple/Violet Focus for Center Card */
+    .card-focus-violet {
+      background: linear-gradient(145deg, #321062 0%, #58169e 50%, #7e22ce 100%) !important;
+      color: #ffffff;
+    }
+
+    /* Dark Holographic Emerald for Right Card */
+    .card-emerald-metal {
+      background: linear-gradient(145deg, #0b1a15 0%, #133327 50%, #1d4d3b 100%) !important;
+      color: #ffffff;
+    }
+
+    /* Dark Obsidian / Director's Cut */
+    .card-dark-obsidian {
+      background: linear-gradient(145deg, #10121a 0%, #1c202e 50%, #293044 100%) !important;
+      color: #ffffff;
+    }
+
+    /* Dynamic Specular Sheen (Moves with Mouse) */
+    .card-specular-glare {
+      position: absolute;
+      inset: -50%;
+      background: radial-gradient(circle at var(--mouse-card-x, 50%) var(--mouse-card-y, 50%), rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 50%);
+      pointer-events: none;
+      z-index: 4;
+      opacity: 0.55;
+      mix-blend-mode: overlay;
+      transition: opacity 0.3s;
+    }
+
+    /* Video Background inside Cards */
+    .card-video-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.28;
+      transition: opacity 0.35s ease;
+      z-index: 1;
+    }
+
+    .card-3d-item:hover .card-video-bg,
+    .card-3d-item.pos-center .card-video-bg {
+      opacity: 0.65;
+    }
+
+    .card-content-layer {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      color: inherit;
+    }
+
+    /* Top Row in Cards */
+    .card-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-pill-tag {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: capitalize;
+    }
+
+    .card-anisotropic-metal .card-pill-tag {
+      background: rgba(255, 255, 255, 0.7);
+      color: #0f172a;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .card-company-label {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      letter-spacing: 0.02em;
+    }
+
+    .card-anisotropic-metal .card-company-label {
+      color: rgba(15, 23, 42, 0.8);
+    }
+
+    /* Bottom Info in Cards */
+    .card-bottom-info {
+      margin-top: auto;
+    }
+
+    .card-headline-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.025em;
+      color: inherit;
+    }
+
+    .card-description-text {
+      font-size: 0.9rem;
+      line-height: 1.45;
+      opacity: 0.9;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: inherit;
+    }
+
+    /* =============================================================================
+       3D SPATIAL PERSPECTIVE POSITIONS (EXACT ARC MATCHING SCREENSHOT)
+       ============================================================================= */
+
+    /* Center Card: Front & Elevated */
+    .card-3d-item.pos-center {
+      transform: translate3d(0, 0, 180px) scale(1.08);
+      z-index: 50;
+      opacity: 1;
+      filter: none;
+      box-shadow: 
+        0 40px 90px -15px rgba(0, 0, 0, 0.5), 
+        0 0 65px rgba(126, 34, 206, 0.45);
+    }
+
+    /* Left Card: Tilted in 3D Perspective */
+    .card-3d-item.pos-left {
+      transform: translate3d(-340px, 0, -40px) rotateY(26deg) scale(0.93);
+      z-index: 30;
+      opacity: 0.92;
+      filter: brightness(0.96);
+    }
+
+    /* Right Card: Tilted in 3D Perspective */
+    .card-3d-item.pos-right {
+      transform: translate3d(340px, 0, -40px) rotateY(-26deg) scale(0.93);
+      z-index: 30;
+      opacity: 0.92;
+      filter: brightness(0.96);
+    }
+
+    /* Outer Cards (Far Left & Far Right) */
+    .card-3d-item.pos-far-left {
+      transform: translate3d(-640px, 0, -220px) rotateY(40deg) scale(0.78);
+      z-index: 15;
+      opacity: 0.5;
+      pointer-events: none;
+      filter: blur(1px) brightness(0.85);
+    }
+
+    .card-3d-item.pos-far-right {
+      transform: translate3d(640px, 0, -220px) rotateY(-40deg) scale(0.78);
+      z-index: 15;
+      opacity: 0.5;
+      pointer-events: none;
+      filter: blur(1px) brightness(0.85);
+    }
+
+    .card-3d-item.pos-hidden {
+      transform: translate3d(0, 0, -450px) scale(0.6);
+      z-index: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 900px) {
+      .card-3d-item { width: 290px; height: 440px; }
+      .card-3d-item.pos-left { transform: translate3d(-200px, 0, -60px) rotateY(22deg) scale(0.88); }
+      .card-3d-item.pos-right { transform: translate3d(200px, 0, -60px) rotateY(-22deg) scale(0.88); }
+    }
+
+    @media (max-width: 640px) {
+      .card-3d-item.pos-left { transform: translate3d(-140px, 0, -80px) rotateY(20deg) scale(0.75); }
+      .card-3d-item.pos-right { transform: translate3d(140px, 0, -80px) rotateY(-20deg) scale(0.75); }
+      .card-3d-item.pos-center { transform: translate3d(0, 0, 100px) scale(0.98); }
+    }
+
+    /* =============================================================================
+       HERO BOTTOM CONTROLS (MATCHING REFERENCE SCREENSHOT)
+       ============================================================================= */
+    .hero-bottom-controls {
+      position: absolute;
+      bottom: 28px;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3.5rem;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    .bottom-left-toggles {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .bottom-avatar-circle {
+      width: 38px;
+      height: 38px;
+      background: #0f172a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.85rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .pill-toggle-btn {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      color: #334155;
+      padding: 0.6rem 1.25rem;
+      border-radius: 100px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    }
+
+    .pill-toggle-btn:hover {
+      background: #ffffff;
+      color: #000;
+    }
+
+    .pill-toggle-btn.active {
+      background: rgba(15, 23, 42, 0.94);
+      color: #ffffff;
+      border: 1.5px solid var(--accent-cyan);
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.35);
+    }
+
+    /* Center Pill: Explore the collection */
+    .btn-explore-collection {
+      pointer-events: auto;
+      background: rgba(22, 25, 33, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      color: #f8fafc;
+      padding: 0.7rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s var(--ease-spring), background 0.2s ease;
+    }
+
+    .btn-explore-collection:hover {
+      background: #0f172a;
+      transform: translateY(-2px);
+    }
+
+    /* Right Arrows */
+    .carousel-nav-arrows {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .arrow-circle-btn {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 50%;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s var(--ease-spring), background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    .arrow-circle-btn:hover {
+      transform: scale(1.1);
+      background: #ffffff;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 768px) {
+      .hero-bottom-controls { padding: 0 1.25rem; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+      .bottom-left-toggles { display: none; }
+    }
+
+    /* =============================================================================
+       SECTION 2: PROVEN INDUSTRY EXPERIENCE (BENTO GRID WITH RESUME DATA)
+       ============================================================================= */
+    .experience-section {
+      background: #07090e;
+      color: #f8fafc;
+      padding: 7rem 2rem;
+      position: relative;
+      z-index: 30;
+    }
+
+    .container-boxed {
+      max-width: 1260px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .section-subtext {
+      font-size: 1.15rem;
+      color: #94a3b8;
+      max-width: 680px;
+      line-height: 1.6;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Bento Grid */
+    .experience-bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+
+    .bento-card {
+      background: rgba(16, 18, 26, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s var(--ease-spring), border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .col-8 { grid-column: span 8; }
+    .col-6 { grid-column: span 6; }
+    .col-4 { grid-column: span 4; }
+    .col-12 { grid-column: span 12; }
+
+    @media (max-width: 900px) {
+      .col-8, .col-6, .col-4 { grid-column: span 12; }
+    }
+
+    .bento-period-badge {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 1.25rem;
+    }
+
+    .bento-company-name {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+    }
+
+    .bento-role-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 1.25rem;
+    }
+
+    .bento-highlights-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .bento-highlights-list li {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      line-height: 1.55;
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .bento-highlights-list li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent-violet);
+      font-size: 0.8rem;
+    }
+
+    /* Voiceover Showcase Studio Card */
+    .voice-artist-showcase {
+      grid-column: span 12;
+      background: linear-gradient(135deg, rgba(20, 24, 38, 0.9) 0%, rgba(35, 16, 68, 0.7) 100%);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 28px;
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 850px) {
+      .voice-artist-showcase { grid-template-columns: 1fr; }
+    }
+
+    .tone-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .tone-pill {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #e2e8f0;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+    }
+
+    .voice-waveform-box {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .voice-play-trigger {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--accent-purple);
+      border: none;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s var(--ease-spring), background 0.2s ease, box-shadow 0.2s;
+      box-shadow: 0 0 25px rgba(112, 37, 217, 0.5);
+      flex-shrink: 0;
+    }
+
+    .voice-play-trigger:hover {
+      transform: scale(1.1);
+      background: var(--accent-violet);
+    }
+
+    .voice-bars-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 45px;
+    }
+
+    .v-bar {
+      width: 4px;
+      height: 12px;
+      background: var(--accent-cyan);
+      border-radius: 4px;
+      transition: height 0.1s ease;
+    }
+
+    /* Skills & Languages */
+    .skills-languages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 850px) {
+      .skills-languages-grid { grid-template-columns: 1fr; }
+    }
+
+    .skill-pill-tag {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.65rem 1rem;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Direct Contact & WhatsApp Footer */
+    .contact-footer-section {
+      background: #05060a;
+      color: #f8fafc;
+      padding: 6rem 2rem 4rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .contact-card-box {
+      background: linear-gradient(135deg, rgba(16, 18, 26, 0.9) 0%, rgba(20, 25, 38, 0.9) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 32px;
+      padding: 4rem 3.5rem;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .contact-card-box { grid-template-columns: 1fr; padding: 2.5rem 1.75rem; }
+    }
+
+    .btn-whatsapp-giant {
+      background: #25D366;
+      color: #000000;
+      padding: 1rem 2.25rem;
+      border-radius: 100px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35);
+      transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
+    }
+
+    .btn-whatsapp-giant:hover {
+      transform: scale(1.05);
+      box-shadow: 0 14px 40px rgba(37, 211, 102, 0.5);
+    }
+
+    .btn-email-outline {
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      padding: 1rem 2rem;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-email-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #ffffff;
+    }
+
+    /* Video Lightbox Modal */
+    .cinema-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 999999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .cinema-modal-backdrop.active {
+      display: flex;
+    }
+
+    .cinema-modal-container {
+      background: #0d0f16;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 28px;
+      width: 100%;
+      max-width: 1080px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-close-trigger {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .modal-close-trigger:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-grid-layout {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+    }
+
+    @media (max-width: 800px) {
+      .modal-grid-layout { grid-template-columns: 1fr; }
+    }
+
+    .modal-video-box {
+      background: #000000;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 16 / 9;
+    }
+
+    .modal-video-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .modal-sidebar-info {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Spatial Cursor -->
+  <div class="spatial-cursor-dot" id="cursorDot"></div>
+  <div class="spatial-cursor-ring" id="cursorRing"></div>
+
+  <!-- =============================================================================
+       TOP FLOATING PILL NAVBAR (PERSONALIZED TO PIYUSH YADAV)
+       ============================================================================= -->
+  <nav class="top-nav-bar">
+    
+    <!-- Top Left Badge: Personalized to Piyush Yadav -->
+    <div class="nav-badge-pill">
+      <span class="badge-dot-live"></span>
+      <span>PIYUSH YADAV // VIDEO EDITOR</span>
+    </div>
+
+    <!-- Center Floating Frosted Pill -->
+    <div class="center-floating-pill">
+      <span class="pill-sparkle-icon">✦</span>
+      <ul class="pill-nav-links">
+        <li><a href="#hero" class="pill-nav-link active">Featured Work</a></li>
+        <li><a href="#experience" class="pill-nav-link">Experience</a></li>
+        <li><a href="#voiceover" class="pill-nav-link">Voice Studio</a></li>
+        <li><a href="#skills" class="pill-nav-link">Skills</a></li>
+        <li><a href="#contact" class="pill-nav-link">Contact</a></li>
+      </ul>
+      <a href="https://wa.me/918320676691?text=Hi%20Piyush!%20I%20saw%20your%203D%20portfolio%20and%20would%20like%20to%20discuss%20a%20video%20project." target="_blank" rel="noopener" class="pill-cta-black">
+        <span>Hire Piyush</span>
+      </a>
+    </div>
+
+    <!-- Right Circle Button: Sound & Spatial FX Toggle -->
+    <button class="nav-circle-btn" id="soundToggleBtn" title="Toggle Sound / Audio Synthesizer">
+      <svg id="soundIconOn" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- =============================================================================
+       HERO STAGE: 3D SPATIAL PERSPECTIVE CAROUSEL & GIANT EDITORIAL TYPOGRAPHY
+       ============================================================================= -->
+  <section class="stage-3d-hero" id="hero">
+    
+    <!-- Ambient Studio Light Cone -->
+    <div class="ambient-studio-light"></div>
+
+    <!-- Giant Editorial Typography Layer Behind 3D Cards -->
+    <div class="giant-background-text" id="giantBgText">
+      PIYUSH YADAV
+    </div>
+
+    <!-- 3D Carousel Viewport (Handles Dragging & Mouse Parallax Gyro) -->
+    <div class="carousel-3d-viewport" id="carouselViewport">
+      <div class="carousel-3d-track" id="carouselTrack">
+        
+        <!-- CARD 1: Left Card (Tilted 3D, Brushed Anisotropic Metallic with Star Glint ✦) -->
+        <div class="card-3d-item card-anisotropic-metal pos-left" data-index="0">
+          <div class="star-glint-flare">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"/>
+            </svg>
+          </div>
+          <div class="card-specular-glare"></div>
+          <video class="card-video-bg" loop muted playsinline preload="metadata">
+            <source src="./assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov.mp4" type="video/mp4" />
+          </video>
+          <div class="card-content-layer">
+            <div class="card-top-row">
+              <span class="card-pill-tag">Commercial Ad</span>
+              <span class="card-company-label">d-vivid.consultant</span>
+            </div>
+            <div class="card-bottom-info">
+              <h3 class="card-headline-title">AI Engineer &amp; Global Education Ads</h3>
+              <p class="card-description-text">Dynamic retention-focused editing with kinetic typography, sound effects &amp; pacing.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: Center Card (Elevated Focus, Vibrant Purple/Violet Glow, Live Video) -->
+        <div class="card-3d-item card-focus-violet pos-center" data-index="1">
+          <div class="card-specular-glare"></div>
+          <video class="card-video-bg" loop muted playsinline preload="metadata" autoplay>
+            <source src="./assets/videos/295-Hindi-Germany.mov" type="video/mp4" />
+          </video>
+          <div class="card-content-layer">
+            <div class="card-top-row">
+              <span class="card-pill-tag">Lead Video Editor</span>
+              <span class="card-company-label">piyushyadav.studio</span>
+            </div>
+            <div class="card-bottom-info">
+              <h3 class="card-headline-title">High-Conversion Commercial &amp; Study Ads</h3>
+              <p class="card-description-text">Produced for D Vivid Consultant. Kinetic typography, international study campaigns &amp; dynamic sound design.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: Right Card (Tilted 3D, Dark Emerald Holographic Sheen) -->
+        <div class="card-3d-item card-emerald-metal pos-right" data-index="2">
+          <div class="card-specular-glare"></div>
+          <video class="card-video-bg" loop muted playsinline preload="metadata">
+            <source src="./assets/videos/3d_project.mov" type="video/mp4" />
+          </video>
+          <div class="card-content-layer">
+            <div class="card-top-row">
+              <span class="card-pill-tag">3D Motion &amp; VFX</span>
+              <span class="card-company-label">motion.compositing</span>
+            </div>
+            <div class="card-bottom-info">
+              <h3 class="card-headline-title">3D Camera Tracking &amp; Motion Graphics</h3>
+              <p class="card-description-text">Complex 3D camera tracking, volumetric lighting, and particle dynamics composited for high-impact reels.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: Outer Left (Director's Cut Showreel) -->
+        <div class="card-3d-item card-dark-obsidian pos-far-left" data-index="3">
+          <div class="card-specular-glare"></div>
+          <video class="card-video-bg" loop muted playsinline preload="metadata">
+            <source src="./assets/videos/Timeline_1.mov" type="video/mp4" />
+          </video>
+          <div class="card-content-layer">
+            <div class="card-top-row">
+              <span class="card-pill-tag">Master Showreel</span>
+              <span class="card-company-label">piyush.showreel</span>
+            </div>
+            <div class="card-bottom-info">
+              <h3 class="card-headline-title">Director's Cut // 2026 Showreel</h3>
+              <p class="card-description-text">Pacing masterclass, rhythmic match-cutting, and DaVinci Resolve color grading.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 5: Outer Right (Documentary Narrative) -->
+        <div class="card-3d-item card-dark-obsidian pos-far-right" data-index="4">
+          <div class="card-specular-glare"></div>
+          <video class="card-video-bg" loop muted playsinline preload="metadata">
+            <source src="./assets/videos/Documentry_work.mov" type="video/mp4" />
+          </video>
+          <div class="card-content-layer">
+            <div class="card-top-row">
+              <span class="card-pill-tag">Documentary</span>
+              <span class="card-company-label">g7edu.global</span>
+            </div>
+            <div class="card-bottom-info">
+              <h3 class="card-headline-title">Human Stories &amp; Student Journeys</h3>
+              <p class="card-description-text">Slow-burn emotional pacing with organic natural lighting color grades for G7Edu Global campaigns.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Controls Bar (Personalized Category Toggles) -->
+    <div class="hero-bottom-controls">
+      
+      <!-- Bottom Left Pill Toggles: Replacing Template Pills with Piyush's Real Specialties -->
+      <div class="bottom-left-toggles">
+        <div class="bottom-avatar-circle">PY</div>
+        <button class="pill-toggle-btn active" id="btnFilterReels">Video Editing &amp; Ads</button>
+        <button class="pill-toggle-btn" id="btnFilterClient">Voice-Over &amp; Motion</button>
+      </div>
+
+      <!-- Center Explore Pill -->
+      <a href="#experience" class="btn-explore-collection">
+        <span>Explore the collection</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </a>
+
+      <!-- Right Navigation Arrows -->
+      <div class="carousel-nav-arrows">
+        <button class="arrow-circle-btn" id="prevCardBtn" aria-label="Previous Project">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <button class="arrow-circle-btn" id="nextCardBtn" aria-label="Next Project">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =============================================================================
+       SECTION: PIYUSH YADAV WORK EXPERIENCE (FROM AUTHENTIC RESUME)
+       ============================================================================= -->
+  <section class="experience-section" id="experience">
+    <div class="container-boxed">
+      
+      <div class="section-eyebrow">CAREER &amp; CLIENT HISTORY</div>
+      <h2 class="section-headline">PROVEN INDUSTRY EXPERIENCE</h2>
+      <p class="section-subtext">
+        Creative professional with comprehensive experience in video editing, motion graphics, and voice-over services across leading consulting, education, and brand platforms.
+      </p>
+
+      <div class="experience-bento-grid">
+        
+        <!-- Job 1: D Vivid Consultant -->
+        <div class="bento-card col-8">
+          <div class="bento-period-badge">2026 • CURRENT</div>
+          <h3 class="bento-company-name">D Vivid Consultant</h3>
+          <div class="bento-role-title">Video Editor &amp; Motion Graphics Designer</div>
+          <ul class="bento-highlights-list">
+            <li>Edited and produced engaging videos for social media, marketing, and brand promotional campaigns.</li>
+            <li>Created high-conversion educational guidance reels for international study abroad programs (Germany, Canada, UK).</li>
+            <li>Engineered dynamic sound design, kinetic subtitle animations, and high-retention pacing.</li>
+          </ul>
+        </div>
+
+        <!-- Job 2: G7Edu Global -->
+        <div class="bento-card col-4">
+          <div class="bento-period-badge">2025 - 2026</div>
+          <h3 class="bento-company-name">G7Edu Global</h3>
+          <div class="bento-role-title">Graphic Designer &amp; Video Editor</div>
+          <ul class="bento-highlights-list">
+            <li>Created scripts for study abroad promotional and informational content.</li>
+            <li>Planned and executed video shoots for student guidance and international education campaigns.</li>
+            <li>Edited videos for social media, marketing, and educational platforms.</li>
+          </ul>
+        </div>
+
+        <!-- Job 3: Astute Academy -->
+        <div class="bento-card col-6">
+          <div class="bento-period-badge">2025 - 2026</div>
+          <h3 class="bento-company-name">Astute Academy</h3>
+          <div class="bento-role-title">Graphic Designer &amp; Video Editor</div>
+          <ul class="bento-highlights-list">
+            <li>Designed creative graphics, marketing materials, social media posts, and branding elements.</li>
+            <li>Edited promotional and educational videos with engaging visuals and sound design.</li>
+            <li>Collaborated with team members to deliver projects on time.</li>
+          </ul>
+        </div>
+
+        <!-- Job 4: Casa The Salon -->
+        <div class="bento-card col-6">
+          <div class="bento-period-badge">2023 - 2024</div>
+          <h3 class="bento-company-name">Casa The Salon</h3>
+          <div class="bento-role-title">Management Team &amp; Social Media Marketing</div>
+          <ul class="bento-highlights-list">
+            <li>Supervised daily operations and coordinated between staff and clients.</li>
+            <li>Handled scheduling, client appointments, and customer service to improve client satisfaction.</li>
+            <li>Assisted in event promotions, seasonal offers, and social media marketing campaigns.</li>
+          </ul>
+        </div>
+
+        <!-- Voiceover Studio Card -->
+        <div class="voice-artist-showcase" id="voiceover">
+          <div>
+            <div class="bento-period-badge">2024 - 2026 • STUDIO</div>
+            <h3 class="bento-company-name" style="font-size: 2.2rem;">Professional Voice Artist &amp; Dubbing</h3>
+            <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.6; margin-top: 0.75rem;">
+              Provided professional voice-overs for advertisements, explainer videos, audiobooks, and dubbing. Skilled in adapting to multiple vocal tonalities with native Hindi and fluent English diction.
+            </p>
+            <div class="tone-pills-row">
+              <span class="tone-pill">Formal &amp; Corporate</span>
+              <span class="tone-pill">Conversational</span>
+              <span class="tone-pill">High-Energy Promo</span>
+              <span class="tone-pill">Warm &amp; Friendly</span>
+              <span class="tone-pill">Storytelling Dubbing</span>
+            </div>
+          </div>
+
+          <!-- Interactive Voice Waveform Audio Player -->
+          <div class="voice-waveform-box">
+            <button class="voice-play-trigger" id="voicePlayBtn" title="Play Voice Sample">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+            </button>
+            <div style="flex-grow: 1;">
+              <div style="font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 8px;">
+                Voice Demo Reel (Commercial &amp; Explainer)
+              </div>
+              <div class="voice-bars-wrap" id="voiceWaveform">
+                <div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div>
+                <div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div>
+                <div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div>
+                <div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div>
+                <div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================================================
+       SECTION: SKILLS, EDUCATION & LANGUAGES (RESUME BENTO)
+       ============================================================================= -->
+  <section class="experience-section" id="skills" style="background: #0d0f16; border-top: 1px solid rgba(255,255,255,0.06);">
+    <div class="container-boxed">
+      
+      <div class="section-eyebrow">CAPABILITIES &amp; BACKGROUND</div>
+      <h2 class="section-headline">SKILLS &amp; EDUCATION</h2>
+
+      <div class="skills-languages-grid">
+        
+        <!-- Card 1: Core Skills -->
+        <div class="bento-card">
+          <h3 class="bento-company-name" style="font-size: 1.35rem; margin-bottom: 1.25rem;">Core Competencies</h3>
+          <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+            <div class="skill-pill-tag">🎬 Video Editing &amp; Pacing</div>
+            <div class="skill-pill-tag">✨ Motion Graphics &amp; 3D Compositing</div>
+            <div class="skill-pill-tag">🎙️ Voice Acting &amp; Audio Dubbing</div>
+            <div class="skill-pill-tag">🎨 Graphic Design &amp; Brand Identity</div>
+            <div class="skill-pill-tag">👥 Team Management &amp; Client Relations</div>
+            <div class="skill-pill-tag">📱 Social Media &amp; Viral 9:16 Content</div>
+          </div>
+        </div>
+
+        <!-- Card 2: Education -->
+        <div class="bento-card">
+          <h3 class="bento-company-name" style="font-size: 1.35rem; margin-bottom: 1.25rem;">Education</h3>
+          <div style="background: rgba(255,255,255,0.04); border-radius: 16px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.08);">
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.4rem;">
+              SENIOR SECONDARY
+            </div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: #fff;">
+              Adarsh School, Juhapura
+            </div>
+            <div style="color: #94a3b8; font-size: 0.95rem; margin-top: 0.35rem;">
+              Commerce Stream
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Languages -->
+        <div class="bento-card">
+          <h3 class="bento-company-name" style="font-size: 1.35rem; margin-bottom: 1.25rem;">Languages</h3>
+          <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 10px;">
+              <strong style="color: #fff;">English</strong>
+              <span style="color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700;">Fluent</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 10px;">
+              <strong style="color: #fff;">Hindi</strong>
+              <span style="color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700;">Native</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 10px;">
+              <strong style="color: #fff;">Japanese</strong>
+              <span style="color: #94a3b8; font-size: 0.85rem; font-weight: 700;">Basics</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================================================
+       DIRECT CONTACT & WHATSAPP SECTION
+       ============================================================================= -->
+  <footer class="contact-footer-section" id="contact">
+    <div class="container-boxed">
+      <div class="contact-card-box">
+        
+        <div>
+          <div class="section-eyebrow">READY TO COLLABORATE?</div>
+          <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.15; margin-bottom: 1rem;">
+            Let’s bring your vision to life.
+          </h2>
+          <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem; max-width: 520px;">
+            Available for video editing, motion graphics, commercial campaigns, and voice-over projects. Reach out directly on WhatsApp for an immediate response.
+          </p>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+            <a href="https://wa.me/918320676691?text=Hi%20Piyush!%20I%20saw%20your%203D%20portfolio%20and%20would%20like%20to%20discuss%20a%20video%20project." target="_blank" rel="noopener" class="btn-whatsapp-giant">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+              </svg>
+              <span>Chat on WhatsApp</span>
+            </a>
+
+            <a href="mailto:py0892471@gmail.com" class="btn-email-outline">
+              <span>py0892471@gmail.com</span>
+            </a>
+          </div>
+        </div>
+
+        <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 2.25rem; display: flex; flex-direction: column; justify-content: center; gap: 1.4rem;">
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #64748b; text-transform: uppercase;">LOCATION</span>
+            <div style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-top: 3px;">
+              Deer Circle, Prahlad Nagar, Ahmedabad
+            </div>
+          </div>
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #64748b; text-transform: uppercase;">PHONE / WHATSAPP</span>
+            <div style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-top: 3px;">
+              +91 83206 76691
+            </div>
+          </div>
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #64748b; text-transform: uppercase;">AVAILABILITY</span>
+            <div style="font-size: 1.15rem; font-weight: 700; color: #10b981; margin-top: 3px;">
+              ● Available for Freelance &amp; Full-time Roles
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top: 4.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; color: #64748b; font-size: 0.88rem; flex-wrap: wrap; gap: 1rem;">
+        <div>&copy; 2026 PIYUSH YADAV. ALL RIGHTS RESERVED.</div>
+        <div>3D SPATIAL UI PORTFOLIO</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =============================================================================
+       FULLSCREEN CINEMA VIDEO MODAL LIGHTBOX
+       ============================================================================= -->
+  <div class="cinema-modal-backdrop" id="cinemaModal">
+    <div class="cinema-modal-container">
+      <button class="modal-close-trigger" id="modalCloseBtn" aria-label="Close">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <div class="modal-grid-layout">
+        <div class="modal-video-box">
+          <video id="modalVideoPlayer" controls playsinline></video>
+        </div>
+        <div class="modal-sidebar-info">
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan); text-transform: uppercase;" id="modalTag">Category</span>
+            <h2 style="font-size: 1.85rem; font-weight: 800; margin-top: 6px; line-height: 1.2;" id="modalTitle">Project Title</h2>
+            <div style="color: #94a3b8; font-size: 0.95rem; margin-top: 1rem; line-height: 1.6;" id="modalDesc">
+              Project description.
+            </div>
+          </div>
+          <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.25rem;">
+            <div style="font-size: 0.85rem; color: #cbd5e1;" id="modalSpecs">SPECS: 4K UHD MASTER</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================================================
+       INLINE JAVASCRIPT: True 3D Mouse Parallax, Drag Physics & Web Audio Synth
+       ============================================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 3D Card Deck Data (Personalized to Piyush Yadav's Real Work & Resume)
+      const CARDS_DATA = [
+        {
+          id: "card-1",
+          tag: "Commercial Ad",
+          company: "d-vivid.consultant",
+          title: "AI Engineer & Global Education Ads",
+          desc: "Dynamic retention-focused editing with kinetic typography, sound effects & pacing.",
+          videoSrc: "./assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov.mp4",
+          fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+          cardClass: "card-anisotropic-metal",
+          hasGlint: true,
+          bgTitle: "PIYUSH YADAV"
+        },
+        {
+          id: "card-2",
+          tag: "Lead Video Editor",
+          company: "piyushyadav.studio",
+          title: "High-Conversion Commercial & Study Ads",
+          desc: "Produced for D Vivid Consultant. Kinetic typography, international study campaigns & dynamic sound design.",
+          videoSrc: "./assets/videos/295-Hindi-Germany.mov",
+          fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4",
+          cardClass: "card-focus-violet",
+          hasGlint: false,
+          bgTitle: "VIDEO EDITOR"
+        },
+        {
+          id: "card-3",
+          tag: "3D Motion & VFX",
+          company: "motion.compositing",
+          title: "3D Camera Tracking & Motion Graphics",
+          desc: "Complex 3D camera tracking, volumetric lighting, and particle dynamics composited for high-impact reels.",
+          videoSrc: "./assets/videos/3d_project.mov",
+          fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+          cardClass: "card-emerald-metal",
+          hasGlint: false,
+          bgTitle: "3D MOTION"
+        },
+        {
+          id: "card-4",
+          tag: "Master Showreel",
+          company: "piyush.showreel",
+          title: "Director's Cut // 2026 Showreel",
+          desc: "Pacing masterclass, rhythmic match-cutting, and DaVinci Resolve color grading.",
+          videoSrc: "./assets/videos/Timeline_1.mov",
+          fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+          cardClass: "card-dark-obsidian",
+          hasGlint: false,
+          bgTitle: "SHOWREEL"
+        },
+        {
+          id: "card-5",
+          tag: "Documentary",
+          company: "g7edu.global",
+          title: "Human Stories & Student Journeys",
+          desc: "Slow-burn emotional pacing with organic natural lighting color grades for G7Edu Global campaigns.",
+          videoSrc: "./assets/videos/Documentry_work.mov",
+          fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+          cardClass: "card-dark-obsidian",
+          hasGlint: false,
+          bgTitle: "DOCUMENTARY"
+        }
+      ];
+
+      let activeIndex = 1; // Center card (Violet) initially focused
+      const totalCards = CARDS_DATA.length;
+      const track = document.getElementById('carouselTrack');
+      const viewport = document.getElementById('carouselViewport');
+      const giantBgText = document.getElementById('giantBgText');
+
+      // Web Audio Synthesizer (Instant 100% offline click & slide sound effects)
+      let audioCtx = null;
+      let soundEnabled = true;
+
+      function getAudioContext() {
+        if (!audioCtx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) audioCtx = new AudioContext();
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        return audioCtx;
+      }
+
+      function playTickSound(freq = 1200) {
+        if (!soundEnabled) return;
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        try {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + 0.05);
+          gain.gain.setValueAtTime(0.04, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.05);
+        } catch(e) {}
+      }
+
+      // Sound toggle button
+      const soundBtn = document.getElementById('soundToggleBtn');
+      if (soundBtn) {
+        soundBtn.addEventListener('click', () => {
+          soundEnabled = !soundEnabled;
+          soundBtn.style.color = soundEnabled ? 'var(--accent-cyan)' : '#64748b';
+          playTickSound(soundEnabled ? 1400 : 600);
+        });
+      }
+
+      // Update 3D card positions based on activeIndex
+      function update3DPositions() {
+        const cardElements = document.querySelectorAll('.card-3d-item');
+        cardElements.forEach((el, idx) => {
+          let diff = (idx - activeIndex) % totalCards;
+          if (diff < -Math.floor(totalCards / 2)) diff += totalCards;
+          if (diff > Math.floor(totalCards / 2)) diff -= totalCards;
+
+          el.classList.remove('pos-center', 'pos-left', 'pos-right', 'pos-far-left', 'pos-far-right', 'pos-hidden');
+          const video = el.querySelector('video');
+
+          if (diff === 0) {
+            el.classList.add('pos-center');
+            if (video) video.play().catch(() => {});
+          } else if (diff === -1) {
+            el.classList.add('pos-left');
+            if (video) video.pause();
+          } else if (diff === 1) {
+            el.classList.add('pos-right');
+            if (video) video.pause();
+          } else if (diff === -2) {
+            el.classList.add('pos-far-left');
+            if (video) video.pause();
+          } else if (diff === 2) {
+            el.classList.add('pos-far-right');
+            if (video) video.pause();
+          } else {
+            el.classList.add('pos-hidden');
+            if (video) video.pause();
+          }
+        });
+
+        // Update giant background typography text with Piyush's craft title
+        if (giantBgText) {
+          const focusedItem = CARDS_DATA[activeIndex];
+          if (focusedItem && focusedItem.bgTitle) {
+            giantBgText.textContent = focusedItem.bgTitle;
+          }
+        }
+      }
+
+      function setCardIndex(newIdx) {
+        activeIndex = (newIdx + totalCards) % totalCards;
+        playTickSound(900);
+        update3DPositions();
+      }
+
+      // Arrow Buttons
+      const prevBtn = document.getElementById('prevCardBtn');
+      const nextBtn = document.getElementById('nextCardBtn');
+      if (prevBtn) prevBtn.addEventListener('click', () => setCardIndex(activeIndex - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => setCardIndex(activeIndex + 1));
+
+      // Keyboard navigation
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') setCardIndex(activeIndex - 1);
+        if (e.key === 'ArrowRight') setCardIndex(activeIndex + 1);
+      });
+
+      // Card click handling
+      const cardElements = document.querySelectorAll('.card-3d-item');
+      cardElements.forEach((card, idx) => {
+        card.addEventListener('click', () => {
+          if (idx === activeIndex) {
+            openCinemaModal(CARDS_DATA[idx]);
+          } else {
+            setCardIndex(idx);
+          }
+        });
+      });
+
+      // =============================================================================
+      // MOUSE PARALLAX & 3D GYROSCOPE TILT PHYSICS
+      // =============================================================================
+      const heroStage = document.getElementById('hero');
+      let targetRotX = 0;
+      let targetRotY = 0;
+      let currentRotX = 0;
+      let currentRotY = 0;
+
+      if (heroStage && viewport) {
+        heroStage.addEventListener('mousemove', (e) => {
+          const rect = heroStage.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
+          const y = (e.clientY - rect.top) / rect.height - 0.5; // -0.5 to 0.5
+
+          targetRotY = x * 14;  // Tilt Y up to 14 deg
+          targetRotX = -y * 10; // Tilt X up to 10 deg
+
+          // Update specular glare on cards
+          cardElements.forEach(card => {
+            const cardRect = card.getBoundingClientRect();
+            const mouseCardX = ((e.clientX - cardRect.left) / cardRect.width) * 100;
+            const mouseCardY = ((e.clientY - cardRect.top) / cardRect.height) * 100;
+            card.style.setProperty('--mouse-card-x', `${mouseCardX}%`);
+            card.style.setProperty('--mouse-card-y', `${mouseCardY}%`);
+          });
+
+          // Subtle parallax on giant background text
+          if (giantBgText) {
+            giantBgText.style.transform = `translate(calc(-50% + ${x * 40}px), calc(-50% + ${y * 25}px))`;
+          }
+        });
+
+        heroStage.addEventListener('mouseleave', () => {
+          targetRotX = 0;
+          targetRotY = 0;
+          if (giantBgText) {
+            giantBgText.style.transform = `translate(-50%, -50%)`;
+          }
+        });
+
+        // Smooth physics loop (lerp)
+        function renderPhysics() {
+          currentRotX += (targetRotX - currentRotX) * 0.08;
+          currentRotY += (targetRotY - currentRotY) * 0.08;
+          if (track) {
+            track.style.transform = `rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg)`;
+          }
+          requestAnimationFrame(renderPhysics);
+        }
+        renderPhysics();
+      }
+
+      // =============================================================================
+      // MOUSE & TOUCH DRAGGING ON 3D CAROUSEL
+      // =============================================================================
+      let isDragging = false;
+      let startX = 0;
+      let dragDelta = 0;
+
+      if (viewport) {
+        viewport.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          startX = e.clientX;
+          dragDelta = 0;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          dragDelta = e.clientX - startX;
+        });
+
+        window.addEventListener('mouseup', () => {
+          if (!isDragging) return;
+          isDragging = false;
+          if (dragDelta < -60) {
+            setCardIndex(activeIndex + 1);
+          } else if (dragDelta > 60) {
+            setCardIndex(activeIndex - 1);
+          }
+        });
+
+        // Touch support for mobile/tablets
+        viewport.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          dragDelta = 0;
+        }, { passive: true });
+
+        viewport.addEventListener('touchmove', (e) => {
+          dragDelta = e.touches[0].clientX - startX;
+        }, { passive: true });
+
+        viewport.addEventListener('touchend', () => {
+          if (dragDelta < -50) {
+            setCardIndex(activeIndex + 1);
+          } else if (dragDelta > 50) {
+            setCardIndex(activeIndex - 1);
+          }
+        });
+      }
+
+      // =============================================================================
+      // BOTTOM SPECIALTY FILTER TOGGLE PILLS
+      // =============================================================================
+      const btnReels = document.getElementById('btnFilterReels');
+      const btnClient = document.getElementById('btnFilterClient');
+      if (btnReels && btnClient) {
+        btnReels.addEventListener('click', () => {
+          btnReels.classList.add('active');
+          btnClient.classList.remove('active');
+          setCardIndex(1); // Commercial Video Editing focus
+        });
+        btnClient.addEventListener('click', () => {
+          btnClient.classList.add('active');
+          btnReels.classList.remove('active');
+          setCardIndex(2); // 3D Motion & Dubbing focus
+        });
+      }
+
+      // =============================================================================
+      // CUSTOM SPATIAL CURSOR
+      // =============================================================================
+      const dot = document.getElementById('cursorDot');
+      const ring = document.getElementById('cursorRing');
+      let mouseX = 0, mouseY = 0;
+      let ringX = 0, ringY = 0;
+
+      if (dot && ring) {
+        window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          dot.style.left = `${mouseX}px`;
+          dot.style.top = `${mouseY}px`;
+        });
+
+        function animateCursor() {
+          ringX += (mouseX - ringX) * 0.15;
+          ringY += (mouseY - ringY) * 0.15;
+          ring.style.left = `${ringX}px`;
+          ring.style.top = `${ringY}px`;
+          requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Hover expand on interactive elements
+        const hoverTargets = document.querySelectorAll('a, button, .card-3d-item');
+        hoverTargets.forEach(el => {
+          el.addEventListener('mouseenter', () => {
+            ring.style.width = '60px';
+            ring.style.height = '60px';
+            ring.style.borderColor = 'rgba(6, 182, 212, 0.6)';
+          });
+          el.addEventListener('mouseleave', () => {
+            ring.style.width = '36px';
+            ring.style.height = '36px';
+            ring.style.borderColor = 'rgba(15, 23, 42, 0.35)';
+          });
+        });
+      }
+
+      // =============================================================================
+      // INTERACTIVE VOICE WAVEFORM AUDIO EQUALIZER
+      // =============================================================================
+      const voiceBtn = document.getElementById('voicePlayBtn');
+      const vBars = document.querySelectorAll('.v-bar');
+      let voiceTimer = null;
+
+      if (voiceBtn) {
+        voiceBtn.addEventListener('click', () => {
+          getAudioContext();
+          if (!voiceTimer) {
+            voiceBtn.style.background = '#10b981';
+            playTickSound(1600);
+            voiceTimer = setInterval(() => {
+              vBars.forEach(b => {
+                const h = Math.floor(Math.random() * 32) + 6;
+                b.style.height = `${h}px`;
+              });
+            }, 80);
+          } else {
+            clearInterval(voiceTimer);
+            voiceTimer = null;
+            voiceBtn.style.background = 'var(--accent-purple)';
+            vBars.forEach(b => b.style.height = '12px');
+            playTickSound(500);
+          }
+        });
+      }
+
+      // =============================================================================
+      // CINEMA VIDEO MODAL LIGHTBOX
+      // =============================================================================
+      const modal = document.getElementById('cinemaModal');
+      const modalVideo = document.getElementById('modalVideoPlayer');
+      const modalClose = document.getElementById('modalCloseBtn');
+      const modalTag = document.getElementById('modalTag');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDesc = document.getElementById('modalDesc');
+
+      function openCinemaModal(item) {
+        if (!modal || !modalVideo) return;
+        modalVideo.src = item.videoSrc;
+        modalVideo.onerror = () => {
+          if (item.fallbackSrc) {
+            modalVideo.src = item.fallbackSrc;
+            modalVideo.load();
+            modalVideo.play().catch(() => {});
+          }
+        };
+        if (modalTag) modalTag.textContent = item.tag;
+        if (modalTitle) modalTitle.textContent = item.title;
+        if (modalDesc) modalDesc.textContent = item.desc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        modalVideo.play().catch(() => {});
+      }
+
+      function closeCinemaModal() {
+        if (!modal || !modalVideo) return;
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        modalVideo.pause();
+      }
+
+      if (modalClose) modalClose.addEventListener('click', closeCinemaModal);
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeCinemaModal();
+        });
+      }
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeCinemaModal();
+      });
+
+      // Initial card position setup
+      update3DPositions();
+
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+/* =============================================================================
+   PIYUSH YADAV — SYNCED LOCAL PORTFOLIO PROJECTS
+   Synced from: C:\Users\janim\Downloads\videos
+   ============================================================================= */
+
+window.SYNCED_USER_VIDEOS = [
+  {
+    "id": "py-01",
+    "title": "MASTER SHOWREEL // THE 2026 TIMELINE",
+    "subtitle": "Director's Cut Master Reel • Multi-Genre Adrenaline",
+    "category": "commercial",
+    "categoryLabel": "Master Showreel",
+    "client": "Piyush Yadav Master Portfolio",
+    "year": "2026",
+    "duration": "01:30",
+    "aspectRatio": "16:9",
+    "resolution": "4K UHD • 60 FPS",
+    "role": "Lead Editor • Colorist • Sound Design",
+    "software": [
+      "DaVinci Resolve Studio",
+      "Premiere Pro",
+      "After Effects"
+    ],
+    "metrics": "Clio & Webby Contender • Master Grade",
+    "description": "Comprehensive demonstration of multi-genre pacing, dynamic speed ramps, sound design foley, and cinematic finishing across brand commercials and narrative cuts.",
+    "videoSrc": "./assets/videos/Timeline_1.mov",
+    "fallbackSrc": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+    "previewSrc": "./assets/videos/Timeline_1.mov",
+    "poster": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80",
+    "isLocal": true,
+    "featured": true
+  },
+  {
+    "id": "py-02",
+    "title": "NEO-SPATIAL // 3D VFX & COMPOSITING",
+    "subtitle": "Blender 3D & After Effects Visual Effects",
+    "category": "vfx",
+    "categoryLabel": "VFX & Motion Design",
+    "client": "Client Work // 3D Motion Lab",
+    "year": "2026",
+    "duration": "00:45",
+    "aspectRatio": "16:9",
+    "resolution": "4K UHD Master",
+    "role": "VFX Editor • 3D Compositor",
+    "software": [
+      "After Effects",
+      "Blender 3D",
+      "Topaz Video AI"
+    ],
+    "metrics": "3D Camera Tracking & Particle Dynamics",
+    "description": "Precision 3D camera tracking, volumetric lighting, particle effects, and multi-pass compositing combining live action with CGI elements.",
+    "videoSrc": "./assets/videos/3d_project.mov",
+    "fallbackSrc": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+    "previewSrc": "./assets/videos/3d_project.mov",
+    "poster": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80",
+    "isLocal": true,
+    "featured": true
+  },
+  {
+    "id": "py-03",
+    "title": "HUMAN STORIES // CINEMATIC DOCUMENTARY",
+    "subtitle": "Narrative Pacing & Organic Natural Light Grade",
+    "category": "music",
+    "categoryLabel": "Narrative & Documentary",
+    "client": "Documentary Collective",
+    "year": "2026",
+    "duration": "01:15",
+    "aspectRatio": "16:9",
+    "resolution": "4K DCI • Cinema Grade",
+    "role": "Narrative Editor • Audio Soundscape Artist",
+    "software": [
+      "DaVinci Resolve Studio",
+      "iZotope RX 11"
+    ],
+    "metrics": "Festival Selection Grade • Binaural Mix",
+    "description": "Slow-burn emotional pacing, organic natural lighting grades, and immersive sound design with dialogue spectral repair via iZotope RX 11.",
+    "videoSrc": "./assets/videos/Documentry_work.mov",
+    "fallbackSrc": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    "previewSrc": "./assets/videos/Documentry_work.mov",
+    "poster": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
+    "isLocal": true,
+    "featured": true
+  },
+  {
+    "id": "py-04",
+    "title": "AI ENGINEER & DATA SCIENTIST // EDTECH AD",
+    "subtitle": "High-Retention Commercial & Tech Campaign",
+    "category": "commercial",
+    "categoryLabel": "Commercial & Brand Ads",
+    "client": "NextGen EdTech Platform",
+    "year": "2026",
+    "duration": "01:10",
+    "aspectRatio": "16:9",
+    "resolution": "4K UHD • 60 FPS",
+    "role": "Senior Editor • Pacing Specialist • Motion Graphics",
+    "software": [
+      "Premiere Pro",
+      "After Effects",
+      "DaVinci Resolve"
+    ],
+    "metrics": "+85% Audience Retention Rate",
+    "description": "Thumb-stopping EdTech pacing engineered for high viewer engagement, synchronized sound effects, dynamic punch-ins, kinetic typography, and seamless pacing transitions.",
+    "videoSrc": "./assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov.mp4",
+    "fallbackSrc": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "previewSrc": "./assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov.mp4",
+    "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80",
+    "isLocal": true,
+    "featured": true
+  },
+  {
+    "id": "py-05",
+    "title": "GLOBAL HORIZONS // GERMANY STUDY CAMPAIGN",
+    "subtitle": "High-Energy Educational Commercial Promo",
+    "category": "commercial",
+    "categoryLabel": "Commercial & Brand Ads",
+    "client": "International Abroad Academy",
+    "year": "2026",
+    "duration": "01:20",
+    "aspectRatio": "16:9",
+    "resolution": "4K UHD Master",
+    "role": "Lead Editor • Sound Foley & Pacing",
+    "software": [
+      "Premiere Pro",
+      "After Effects"
+    ],
+    "metrics": "1.8M Targeted Impressions",
+    "description": "Fast-paced recruitment and educational campaign with punchy sound design, kinetic text highlights, travel b-roll match cuts, and high-energy color palette.",
+    "videoSrc": "./assets/videos/295-Hindi-Germany.mov",
+    "fallbackSrc": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4",
+    "previewSrc": "./assets/videos/295-Hindi-Germany.mov",
+    "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+    "isLocal": true,
+    "featured": true
+  },
+  {
+    "id": "py-06",
+    "title": "STAFF TALENT // CORPORATE SPOTLIGHT 01",
+    "subtitle": "Corporate Culture & Brand Identity Film",
+    "category": "commercial",
+    "categoryLabel": "Commercial & Brand Ads",
+    "client": "Enterprise Corporate Series",
+    "year": "2026",
+    "duration": "01:05",
+    "aspectRatio": "16:9",
+    "resolution": "4K UHD Master",
+    "role": "Editor & Colorist • Multitrack Audio Cleanup",
+    "software": [
+      "DaVinci Resolve",
+      "Premiere Pro"
+    ],
+    "metrics": "Internal Benchmark Delivery",
+    "description": "Dynamic corporate staff narrative featuring rhythmic interview cuts, calibrated skin tones, clean corporate pacing, and ambient motion graphics.",
+    "videoSrc": "./assets/videos/148-Hindi-Staff_Video-.mov",
+    "fallbackSrc": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+    "previewSrc": "./assets/videos/148-Hindi-Staff_Video-.mov",
+    "poster": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80",
+    "isLocal": true,
+    "featured": false
+  },
+  {
+    "id": "py-07",
+    "title": "ORGANIZATIONAL CULTURE // STAFF SPOTLIGHT 02",
+    "subtitle": "Employer Branding & Team Showcase",
+    "category": "commercial",
+    "categoryLabel": "Commercial & Brand Ads",
+    "client": "Enterprise Corporate Series",
+    "year": "2026",
+    "duration": "00:55",
+    "aspectRatio": "16:9",
+    "resolution": "4K UHD Master",
+    "role": "Editor • Dialogue Pacing & Grading",
+    "software": [
+      "DaVinci Resolve",
+      "Premiere Pro"
+    ],
+    "metrics": "Executive Showcase Grade",
+    "description": "Polished multi-speaker interview edit with dynamic lower-thirds, pace modulation, subtle acoustic resonance, and precise multi-camera cuts.",
+    "videoSrc": "./assets/videos/155-Hindi-Staff_Video-.mov",
+    "fallbackSrc": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
+    "previewSrc": "./assets/videos/155-Hindi-Staff_Video-.mov",
+    "poster": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80",
+    "isLocal": true,
+    "featured": false
+  }
+];
