@@ -189,10 +189,16 @@
         if (e.key === 'ArrowRight') setCardIndex(activeIndex + 1);
       });
 
-      // Card click handling
+      let hasSwiped = false;
+
+      // Card click handling with swipe suppression
       const cardElements = document.querySelectorAll('.card-3d-item');
       cardElements.forEach((card, idx) => {
-        card.addEventListener('click', () => {
+        card.addEventListener('click', (e) => {
+          if (hasSwiped) {
+            e.preventDefault();
+            return;
+          }
           if (idx === activeIndex) {
             openCinemaModal(CARDS_DATA[idx]);
           } else {
@@ -266,39 +272,45 @@
           isDragging = true;
           startX = e.clientX;
           dragDelta = 0;
+          hasSwiped = false;
         });
 
         window.addEventListener('mousemove', (e) => {
           if (!isDragging) return;
           dragDelta = e.clientX - startX;
+          if (Math.abs(dragDelta) > 12) hasSwiped = true;
         });
 
         window.addEventListener('mouseup', () => {
           if (!isDragging) return;
           isDragging = false;
-          if (dragDelta < -60) {
+          if (dragDelta < -45) {
             setCardIndex(activeIndex + 1);
-          } else if (dragDelta > 60) {
+          } else if (dragDelta > 45) {
             setCardIndex(activeIndex - 1);
           }
+          setTimeout(() => { hasSwiped = false; }, 80);
         });
 
-        // Touch support for mobile/tablets
+        // Touch support for mobile/tablets (sensitive & smooth swipe physics)
         viewport.addEventListener('touchstart', (e) => {
           startX = e.touches[0].clientX;
           dragDelta = 0;
+          hasSwiped = false;
         }, { passive: true });
 
         viewport.addEventListener('touchmove', (e) => {
           dragDelta = e.touches[0].clientX - startX;
+          if (Math.abs(dragDelta) > 10) hasSwiped = true;
         }, { passive: true });
 
         viewport.addEventListener('touchend', () => {
-          if (dragDelta < -50) {
+          if (dragDelta < -35) {
             setCardIndex(activeIndex + 1);
-          } else if (dragDelta > 50) {
+          } else if (dragDelta > 35) {
             setCardIndex(activeIndex - 1);
           }
+          setTimeout(() => { hasSwiped = false; }, 80);
         });
       }
 
@@ -531,5 +543,21 @@
       // Initial card position setup & video healer activation
       update3DPositions();
       initBackgroundVideoHealers();
+      // Mobile touch unlocker for immediate video playback on iOS & Android
+      function unlockMobileAutoplay() {
+        const centerVid = document.querySelector('.card-3d-item.pos-center video');
+        if (centerVid && centerVid.paused) {
+          centerVid.muted = true;
+          const p = centerVid.play();
+          if (p !== undefined) p.catch(() => {});
+        }
+        window.removeEventListener('touchstart', unlockMobileAutoplay);
+        window.removeEventListener('click', unlockMobileAutoplay);
+        window.removeEventListener('scroll', unlockMobileAutoplay);
+      }
+      window.addEventListener('touchstart', unlockMobileAutoplay, { passive: true });
+      window.addEventListener('click', unlockMobileAutoplay, { passive: true });
+      window.addEventListener('scroll', unlockMobileAutoplay, { passive: true });
+
 
     })();
