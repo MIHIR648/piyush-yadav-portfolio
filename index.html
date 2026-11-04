@@ -109,489 +109,12 @@
     }
 
     /* =============================================================================
-       TOP FLOATING PILL NAVBAR (FAITHFUL TO USER REFERENCE SCREENSHOT)
-       ============================================================================= */
-    .top-nav-bar {
-      position: fixed;
-      top: 24px;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 3rem;
-      pointer-events: none;
-    }
-
-    /* Top Left Badge: Piyush Yadav Identity */
-    .nav-badge-pill {
-      pointer-events: auto;
-      background: rgba(32, 35, 42, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      color: #f8fafc;
-      padding: 0.65rem 1.35rem;
-      border-radius: 100px;
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      user-select: none;
-    }
-
-    .badge-dot-live {
-      width: 7px;
-      height: 7px;
-      background: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #10b981;
-      animation: pulseGreen 2s infinite;
-    }
-
-    @keyframes pulseGreen {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-
-    /* Center Floating Frosted Pill */
-    .center-floating-pill {
-      pointer-events: auto;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 100px;
-      padding: 0.35rem 0.45rem 0.35rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1.6rem;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
-      user-select: none;
-    }
-
-    .pill-sparkle-icon {
-      color: #0f172a;
-      font-size: 1.15rem;
-      display: flex;
-      align-items: center;
-      line-height: 1;
-      animation: rotateSlow 20s linear infinite;
-    }
-
-    @keyframes rotateSlow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .pill-nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.7rem;
-      list-style: none;
-    }
-
-    .pill-nav-link {
-      color: #475569;
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      transition: color 0.2s ease;
-      position: relative;
-    }
-
-    .pill-nav-link:hover, .pill-nav-link.active {
-      color: #000;
-    }
-
-    .pill-cta-black {
-      background: #0f172a;
-      color: #ffffff;
-      border: none;
-      padding: 0.65rem 1.45rem;
-      border-radius: 100px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s var(--ease-spring), background 0.2s ease, box-shadow 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
-    }
-
-    .pill-cta-black:hover {
-      background: #000000;
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.35);
-    }
-
-    /* Right Action Button (Sound / Grid Toggle) */
-    .nav-circle-btn {
-      pointer-events: auto;
-      width: 46px;
-      height: 46px;
-      background: rgba(32, 35, 42, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 50%;
-      color: #f8fafc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.2s var(--ease-spring), background 0.2s ease, color 0.2s;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .nav-circle-btn:hover {
-      transform: scale(1.1);
-      background: #0f172a;
-      color: var(--accent-cyan);
-    }
-
-    @media (max-width: 960px) {
-      .pill-nav-links { display: none; }
-      .top-nav-bar { padding: 0 1.25rem; }
-    }
-
-    /* =============================================================================
-       HERO STAGE: 3D PERSPECTIVE CAROUSEL & GIANT EDITORIAL TYPOGRAPHY
-       ============================================================================= */
-    .stage-3d-hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding-top: 100px;
-      padding-bottom: 70px;
-      overflow: hidden;
-      perspective: 1400px;
-      perspective-origin: 50% 50%;
-      background: radial-gradient(circle at 50% 25%, #ffffff 0%, #ebecee 55%, #d8dade 100%);
-    }
-
-    /* Top Ambient Studio Lighting Cone */
-    .ambient-studio-light {
-      position: absolute;
-      top: -150px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 500px;
-      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 70%);
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    /* Giant Background Editorial Typography (Behind 3D Cards) */
-    .giant-background-text {
-      position: absolute;
-      top: 48%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      text-align: center;
-      font-family: var(--font-display);
-      font-size: clamp(4.5rem, 15vw, 15rem);
-      font-weight: 900;
-      line-height: 0.88;
-      letter-spacing: -0.055em;
-      color: #0b0e17;
-      pointer-events: none;
-      user-select: none;
-      white-space: nowrap;
-      z-index: 1;
-      opacity: 0.92;
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* 3D Track Wrapper with Interactive Parallax Gyro */
-    .carousel-3d-viewport {
-      position: relative;
-      width: 100%;
-      max-width: 1360px;
-      height: 540px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform-style: preserve-3d;
-      z-index: 10;
-      cursor: grab;
-    }
-
-    .carousel-3d-viewport:active {
-      cursor: grabbing;
-    }
-
-    .carousel-3d-track {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform-style: preserve-3d;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* 3D Card Base Element */
-    .card-3d-item {
-      position: absolute;
-      width: 340px;
-      height: 500px;
-      border-radius: 34px;
-      padding: 2.25rem 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      transition: 
-        transform 0.65s var(--ease-spring), 
-        opacity 0.5s ease, 
-        box-shadow 0.5s ease,
-        filter 0.5s ease;
-      transform-origin: center center;
-      overflow: hidden;
-      user-select: none;
-      box-shadow: 
-        0 30px 70px -15px rgba(0, 0, 0, 0.4), 
-        0 12px 24px -8px rgba(0, 0, 0, 0.25);
-    }
-
-    /* =============================================================================
-       CARD SURFACES: Brushed Metallic Anisotropic, Star Glint, and Violet Glow
+       3D SPATIAL PERSPECTIVE POSITIONS (PERFECT PROPORTIONS PER SCREEN SIZE)
        ============================================================================= */
 
-    /* Metallic Brushed Anisotropic Shader for Left Card */
-    .card-anisotropic-metal {
-      background: 
-        radial-gradient(circle at 45% 45%, rgba(255, 255, 255, 0.8) 0%, transparent 45%),
-        conic-gradient(from 180deg at 50% 50%, 
-          #9ba0ab 0deg, 
-          #e5e7eb 50deg, 
-          #8a8f9c 110deg, 
-          #ffffff 180deg, 
-          #8a8f9c 250deg, 
-          #e5e7eb 310deg, 
-          #9ba0ab 360deg) !important;
-      color: #0f172a;
-    }
-
-    /* Star Glint Reflection (✦) on Brushed Metallic Card */
-    .star-glint-flare {
-      position: absolute;
-      top: 52%;
-      left: 12%;
-      width: 50px;
-      height: 50px;
-      pointer-events: none;
-      z-index: 6;
-      opacity: 0.9;
-      animation: glintShimmer 4s ease-in-out infinite;
-    }
-
-    .star-glint-flare svg {
-      width: 100%;
-      height: 100%;
-      fill: #ffffff;
-      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.8));
-    }
-
-    @keyframes glintShimmer {
-      0%, 100% { opacity: 0.7; transform: scale(0.9) rotate(0deg); }
-      50% { opacity: 1; transform: scale(1.15) rotate(15deg); }
-    }
-
-    /* Vibrant Royal Purple/Violet Focus for Center Card */
-    .card-focus-violet {
-      background: linear-gradient(145deg, #321062 0%, #58169e 50%, #7e22ce 100%) !important;
-      color: #ffffff;
-    }
-
-    /* Dark Holographic Emerald for Right Card */
-    .card-emerald-metal {
-      background: linear-gradient(145deg, #0b1a15 0%, #133327 50%, #1d4d3b 100%) !important;
-      color: #ffffff;
-    }
-
-    /* Dark Obsidian / Director's Cut */
-    .card-dark-obsidian {
-      background: linear-gradient(145deg, #10121a 0%, #1c202e 50%, #293044 100%) !important;
-      color: #ffffff;
-    }
-
-    /* Dynamic Specular Sheen (Moves with Mouse) */
-    .card-specular-glare {
-      position: absolute;
-      inset: -50%;
-      background: radial-gradient(circle at var(--mouse-card-x, 50%) var(--mouse-card-y, 50%), rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 50%);
-      pointer-events: none;
-      z-index: 4;
-      opacity: 0.55;
-      mix-blend-mode: overlay;
-      transition: opacity 0.3s;
-    }
-
-    /* Video Background inside Cards: High Visibility & Vibrant Clarity */
-    .card-video-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.85; /* Changed from 0.28 to 0.85 - bright, vivid & clearly visible! */
-      transition: opacity 0.35s ease, filter 0.35s ease;
-      z-index: 2;
-    }
-
-    .card-3d-item.pos-center .card-video-bg {
-      opacity: 1; /* Center active card has 100% video visibility! */
-    }
-
-    .card-3d-item.pos-left .card-video-bg,
-    .card-3d-item.pos-right .card-video-bg {
-      opacity: 0.78;
-    }
-
-    /* Video Overlay Gradient: Guarantees text readability while keeping video 100% visible */
-    .card-video-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(8, 10, 16, 0.94) 0%, rgba(8, 10, 16, 0.35) 45%, rgba(8, 10, 16, 0.1) 100%);
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    /* Center Card Play Indicator Pill */
-    .center-card-play-pill {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(15, 23, 42, 0.88);
-      backdrop-filter: blur(14px);
-      border: 1.5px solid rgba(255, 255, 255, 0.25);
-      color: #ffffff;
-      padding: 0.65rem 1.35rem;
-      border-radius: 100px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(6, 182, 212, 0.45);
-      z-index: 6;
-      pointer-events: none;
-      transition: transform 0.2s var(--ease-spring), background 0.2s;
-    }
-
-    .card-3d-item:not(.pos-center) .center-card-play-pill {
-      display: none;
-    }
-
-    .card-3d-item.pos-center:hover .center-card-play-pill {
-      transform: translate(-50%, -50%) scale(1.08);
-      background: rgba(6, 182, 212, 0.95);
-      color: #000;
-      box-shadow: 0 15px 40px rgba(6, 182, 212, 0.6);
-    }
-
-    .card-content-layer {
-      position: relative;
-      z-index: 5;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-      color: inherit;
-    }
-
-    /* Top Row in Cards */
-    .card-top-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .card-pill-tag {
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #ffffff;
-      padding: 0.35rem 0.9rem;
-      border-radius: 100px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: capitalize;
-    }
-
-    .card-anisotropic-metal .card-pill-tag {
-      background: rgba(255, 255, 255, 0.7);
-      color: #0f172a;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .card-company-label {
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.85);
-      letter-spacing: 0.02em;
-    }
-
-    .card-anisotropic-metal .card-company-label {
-      color: rgba(15, 23, 42, 0.8);
-    }
-
-    /* Bottom Info in Cards */
-    .card-bottom-info {
-      margin-top: auto;
-    }
-
-    .card-headline-title {
-      font-size: 1.7rem;
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.025em;
-      color: inherit;
-    }
-
-    .card-description-text {
-      font-size: 0.9rem;
-      line-height: 1.45;
-      opacity: 0.9;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      color: inherit;
-    }
-
-    /* =============================================================================
-       3D SPATIAL PERSPECTIVE POSITIONS (EXACT ARC MATCHING SCREENSHOT)
-       ============================================================================= */
-
-    /* Center Card: Front & Elevated */
+    /* Large Desktop (>= 1400px) */
     .card-3d-item.pos-center {
-      transform: translate3d(0, 0, 180px) scale(1.08);
+      transform: translate3d(0, 0, 160px) scale(1.06);
       z-index: 50;
       opacity: 1;
       filter: none;
@@ -600,25 +123,22 @@
         0 0 65px rgba(126, 34, 206, 0.45);
     }
 
-    /* Left Card: Tilted in 3D Perspective */
     .card-3d-item.pos-left {
-      transform: translate3d(-340px, 0, -40px) rotateY(26deg) scale(0.93);
+      transform: translate3d(-310px, 0, -35px) rotateY(25deg) scale(0.92);
       z-index: 30;
       opacity: 0.92;
       filter: brightness(0.96);
     }
 
-    /* Right Card: Tilted in 3D Perspective */
     .card-3d-item.pos-right {
-      transform: translate3d(340px, 0, -40px) rotateY(-26deg) scale(0.93);
+      transform: translate3d(310px, 0, -35px) rotateY(-25deg) scale(0.92);
       z-index: 30;
       opacity: 0.92;
       filter: brightness(0.96);
     }
 
-    /* Outer Cards (Far Left & Far Right) */
     .card-3d-item.pos-far-left {
-      transform: translate3d(-640px, 0, -220px) rotateY(40deg) scale(0.78);
+      transform: translate3d(-560px, 0, -180px) rotateY(38deg) scale(0.76);
       z-index: 15;
       opacity: 0.5;
       pointer-events: none;
@@ -626,7 +146,7 @@
     }
 
     .card-3d-item.pos-far-right {
-      transform: translate3d(640px, 0, -220px) rotateY(-40deg) scale(0.78);
+      transform: translate3d(560px, 0, -180px) rotateY(-38deg) scale(0.76);
       z-index: 15;
       opacity: 0.5;
       pointer-events: none;
@@ -634,42 +154,156 @@
     }
 
     .card-3d-item.pos-hidden {
-      transform: translate3d(0, 0, -450px) scale(0.6);
+      transform: translate3d(0, 0, -420px) scale(0.5);
       z-index: 0;
       opacity: 0;
       pointer-events: none;
     }
 
-    @media (max-width: 900px) {
-      .card-3d-item { width: 290px; height: 440px; }
-      .card-3d-item.pos-left { transform: translate3d(-190px, 0, -60px) rotateY(22deg) scale(0.86); }
-      .card-3d-item.pos-right { transform: translate3d(190px, 0, -60px) rotateY(-22deg) scale(0.86); }
+    /* Standard Laptops & Desktops (1024px - 1399px) */
+    @media (max-width: 1399px) {
+      .card-3d-item {
+        width: 285px;
+        height: clamp(390px, 50vh, 445px);
+        padding: 1.75rem 1.6rem;
+      }
+      .card-3d-item.pos-center {
+        transform: translate3d(0, 0, 130px) scale(1.04);
+      }
+      .card-3d-item.pos-left {
+        transform: translate3d(-240px, 0, -35px) rotateY(23deg) scale(0.88);
+      }
+      .card-3d-item.pos-right {
+        transform: translate3d(240px, 0, -35px) rotateY(-23deg) scale(0.88);
+      }
+      .card-3d-item.pos-far-left {
+        transform: translate3d(-440px, 0, -150px) rotateY(34deg) scale(0.72);
+      }
+      .card-3d-item.pos-far-right {
+        transform: translate3d(440px, 0, -150px) rotateY(-34deg) scale(0.72);
+      }
     }
 
-    @media (max-width: 640px) {
-      .card-3d-item {
-        width: clamp(260px, 80vw, 295px);
-        height: clamp(390px, 57vh, 440px);
-        border-radius: 26px;
-        padding: 1.6rem 1.3rem;
+    /* Tablets & Small Laptops (768px - 1023px) */
+    @media (max-width: 1023px) {
+      .carousel-3d-viewport {
+        height: clamp(400px, 52vh, 450px);
       }
-      .card-3d-item.pos-center { transform: translate3d(0, 0, 70px) scale(1.02); }
-      .card-3d-item.pos-left { transform: translate3d(-110px, 0, -70px) rotateY(22deg) scale(0.76); opacity: 0.75; }
-      .card-3d-item.pos-right { transform: translate3d(110px, 0, -70px) rotateY(-22deg) scale(0.76); opacity: 0.75; }
-      .card-headline-title { font-size: 1.35rem; margin-bottom: 0.5rem; }
-      .card-description-text { font-size: 0.82rem; line-height: 1.4; }
-      .center-card-play-pill { padding: 0.5rem 1rem; font-size: 0.72rem; gap: 0.4rem; }
+      .card-3d-item {
+        width: 255px;
+        height: clamp(360px, 48vh, 410px);
+        padding: 1.5rem 1.35rem;
+      }
+      .card-3d-item.pos-center {
+        transform: translate3d(0, 0, 100px) scale(1.02);
+      }
+      .card-3d-item.pos-left {
+        transform: translate3d(-175px, 0, -45px) rotateY(21deg) scale(0.84);
+      }
+      .card-3d-item.pos-right {
+        transform: translate3d(175px, 0, -45px) rotateY(-21deg) scale(0.84);
+      }
+      .card-3d-item.pos-far-left,
+      .card-3d-item.pos-far-right {
+        transform: translate3d(0, 0, -300px) scale(0.5);
+        opacity: 0;
+        pointer-events: none;
+      }
+      .giant-background-text {
+        font-size: clamp(2.8rem, 9vw, 5.5rem);
+      }
+      .card-headline-title {
+        font-size: 1.35rem;
+      }
     }
 
-    @media (max-width: 380px) {
-      .card-3d-item {
-        width: 250px;
-        height: 380px;
-        padding: 1.3rem 1.1rem;
+    /* Mobile Handheld Devices (481px - 767px) */
+    @media (max-width: 767px) {
+      .stage-3d-hero {
+        min-height: 520px;
+        perspective: 1000px;
       }
-      .card-3d-item.pos-left { transform: translate3d(-90px, 0, -60px) rotateY(20deg) scale(0.72); }
-      .card-3d-item.pos-right { transform: translate3d(90px, 0, -60px) rotateY(-20deg) scale(0.72); }
-      .card-headline-title { font-size: 1.2rem; }
+      .carousel-3d-viewport {
+        height: clamp(380px, 56vh, 430px);
+      }
+      .card-3d-item {
+        width: clamp(240px, 74vw, 280px);
+        height: clamp(350px, 52vh, 400px);
+        border-radius: 24px;
+        padding: 1.4rem 1.25rem;
+      }
+      .card-3d-item.pos-center {
+        transform: translate3d(0, 0, 70px) scale(1.02);
+      }
+      .card-3d-item.pos-left {
+        transform: translate3d(-100px, 0, -55px) rotateY(20deg) scale(0.78);
+        opacity: 0.75;
+      }
+      .card-3d-item.pos-right {
+        transform: translate3d(100px, 0, -55px) rotateY(-20deg) scale(0.78);
+        opacity: 0.75;
+      }
+      .card-3d-item.pos-far-left,
+      .card-3d-item.pos-far-right {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .card-headline-title {
+        font-size: 1.28rem;
+        margin-bottom: 0.4rem;
+      }
+      .card-description-text {
+        font-size: 0.8rem;
+        line-height: 1.4;
+      }
+      .center-card-play-pill {
+        padding: 0.45rem 0.95rem;
+        font-size: 0.7rem;
+      }
+      .giant-background-text {
+        font-size: clamp(2rem, 9vw, 4rem);
+      }
+    }
+
+    /* Compact Mobile Phones (<= 480px) */
+    @media (max-width: 480px) {
+      .stage-3d-hero {
+        min-height: 490px;
+      }
+      .carousel-3d-viewport {
+        height: clamp(350px, 53vh, 395px);
+      }
+      .card-3d-item {
+        width: clamp(225px, 70vw, 260px);
+        height: clamp(330px, 49vh, 375px);
+        border-radius: 20px;
+        padding: 1.25rem 1.1rem;
+      }
+      .card-3d-item.pos-center {
+        transform: translate3d(0, 0, 50px) scale(1.0);
+      }
+      .card-3d-item.pos-left {
+        transform: translate3d(-78px, 0, -45px) rotateY(18deg) scale(0.76);
+        opacity: 0.72;
+      }
+      .card-3d-item.pos-right {
+        transform: translate3d(78px, 0, -45px) rotateY(-18deg) scale(0.76);
+        opacity: 0.72;
+      }
+      .card-headline-title {
+        font-size: 1.15rem;
+      }
+      .card-pill-tag {
+        font-size: 0.68rem;
+        padding: 0.25rem 0.7rem;
+      }
+      .card-company-label {
+        font-size: 0.74rem;
+      }
+      .center-card-play-pill {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.66rem;
+      }
     }
 
     /* =============================================================================
@@ -677,15 +311,29 @@
        ============================================================================= */
     .hero-bottom-controls {
       position: absolute;
-      bottom: 28px;
+      bottom: clamp(14px, 2.8vh, 28px);
       left: 0;
       right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 3.5rem;
       z-index: 20;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 clamp(1rem, 3.5vw, 3.5rem);
       pointer-events: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .hero-bottom-controls > :nth-child(1) {
+      justify-self: start;
+    }
+
+    .hero-bottom-controls > :nth-child(2) {
+      justify-self: center;
+    }
+
+    .hero-bottom-controls > :nth-child(3) {
+      justify-self: end;
     }
 
     .bottom-left-toggles {
@@ -792,8 +440,30 @@
     }
 
     @media (max-width: 768px) {
-      .hero-bottom-controls { padding: 0 1.25rem; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-      .bottom-left-toggles { display: none; }
+      .top-nav-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        top: 14px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .center-floating-pill {
+        display: none;
+      }
+      .hero-bottom-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        bottom: 14px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .bottom-left-toggles {
+        display: none;
+      }
     }
 
     /* =============================================================================
@@ -949,6 +619,9 @@
     .container-boxed {
       max-width: 1260px;
       margin: 0 auto;
+      padding: 0 clamp(1.25rem, 3.5vw, 2.5rem);
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .section-eyebrow {
@@ -1481,10 +1154,12 @@
             </svg>
           </div>
           <div class="card-specular-glare"></div>
-          <video class="card-video-bg" loop muted playsinline webkit-playsinline preload="metadata">
+          <video class="card-video-bg" loop muted playsinline webkit-playsinline preload="auto">
+            <source src="trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4" type="video/mp4" />
+            <source src="trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov (1).mp4" type="video/mp4" />
+            <source src="./trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4" type="video/mp4" />
             <source src="assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4" type="video/mp4" />
-            <source src="assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov.mp4" type="video/mp4" />
-            <source src="assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov%20(1).mp4" type="video/mp4" />
+            <source src="assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov (1).mp4" type="video/mp4" />
             <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
           </video>
           <div class="card-content-layer">
@@ -1503,6 +1178,8 @@
         <div class="card-3d-item card-focus-violet pos-center" data-index="1">
           <div class="card-specular-glare"></div>
           <video class="card-video-bg" loop muted playsinline webkit-playsinline preload="auto" autoplay>
+            <source src="295-Hindi-Germany.mp4" type="video/mp4" />
+            <source src="./295-Hindi-Germany.mp4" type="video/mp4" />
             <source src="assets/videos/295-Hindi-Germany.mp4" type="video/mp4" />
             <source src="assets/videos/295-Hindi-Germany.mov" type="video/mp4" />
             <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4" type="video/mp4" />
@@ -1522,7 +1199,9 @@
         <!-- CARD 3: Right Card (Tilted 3D, Dark Emerald Holographic Sheen) -->
         <div class="card-3d-item card-emerald-metal pos-right" data-index="2">
           <div class="card-specular-glare"></div>
-          <video class="card-video-bg" loop muted playsinline webkit-playsinline preload="metadata">
+          <video class="card-video-bg" loop muted playsinline webkit-playsinline preload="auto">
+            <source src="3d_project.mp4" type="video/mp4" />
+            <source src="./3d_project.mp4" type="video/mp4" />
             <source src="assets/videos/3d_project.mp4" type="video/mp4" />
             <source src="assets/videos/3d_project.mov" type="video/mp4" />
             <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4" />
@@ -1542,7 +1221,9 @@
         <!-- CARD 4: Outer Left (Director's Cut Showreel) -->
         <div class="card-3d-item card-dark-obsidian pos-far-left" data-index="3">
           <div class="card-specular-glare"></div>
-          <video class="card-video-bg" loop muted playsinline webkit-playsinline preload="metadata">
+          <video class="card-video-bg" loop muted playsinline webkit-playsinline preload="auto">
+            <source src="Timeline_1.mp4" type="video/mp4" />
+            <source src="./Timeline_1.mp4" type="video/mp4" />
             <source src="assets/videos/Timeline_1.mp4" type="video/mp4" />
             <source src="assets/videos/Timeline_1.mov" type="video/mp4" />
             <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4" type="video/mp4" />
@@ -1562,7 +1243,9 @@
         <!-- CARD 5: Outer Right (Documentary Narrative) -->
         <div class="card-3d-item card-dark-obsidian pos-far-right" data-index="4">
           <div class="card-specular-glare"></div>
-          <video class="card-video-bg" loop muted playsinline webkit-playsinline preload="metadata">
+          <video class="card-video-bg" loop muted playsinline webkit-playsinline preload="auto">
+            <source src="Documentry_work.mp4" type="video/mp4" />
+            <source src="./Documentry_work.mp4" type="video/mp4" />
             <source src="assets/videos/Documentry_work.mp4" type="video/mp4" />
             <source src="assets/videos/Documentry_work.mov" type="video/mp4" />
             <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4" />
@@ -1636,6 +1319,8 @@
         <div class="video-card-large">
           <div class="video-frame-container">
             <video controls playsinline webkit-playsinline preload="metadata">
+              <source src="295-Hindi-Germany.mp4" type="video/mp4" />
+              <source src="./295-Hindi-Germany.mp4" type="video/mp4" />
               <source src="assets/videos/295-Hindi-Germany.mp4" type="video/mp4" />
               <source src="assets/videos/295-Hindi-Germany.mov" type="video/mp4" />
               <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4" type="video/mp4" />
@@ -1649,7 +1334,7 @@
             </div>
             <div class="video-meta-footer">
               <span>CLIENT: D VIVID CONSULTANT</span>
-              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/295-Hindi-Germany.mp4', 'Commercial Campaign', 'D Vivid Consultant // Study in Germany', 'High-conversion educational campaign engineered with fast kinetic pacing, dynamic subtitle motion, and punchy audio sound design.')">
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('295-Hindi-Germany.mp4', 'Commercial Campaign', 'D Vivid Consultant // Study in Germany', 'High-conversion educational campaign engineered with fast kinetic pacing, dynamic subtitle motion, and punchy audio sound design.')">
                 <span>Cinema Mode</span>
               </button>
             </div>
@@ -1660,8 +1345,11 @@
         <div class="video-card-large">
           <div class="video-frame-container">
             <video controls playsinline webkit-playsinline preload="metadata">
+              <source src="trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4" type="video/mp4" />
+              <source src="trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov (1).mp4" type="video/mp4" />
+              <source src="./trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4" type="video/mp4" />
               <source src="assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4" type="video/mp4" />
-              <source src="assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov.mp4" type="video/mp4" />
+              <source src="assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov (1).mp4" type="video/mp4" />
               <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
             </video>
           </div>
@@ -1673,7 +1361,7 @@
             </div>
             <div class="video-meta-footer">
               <span>CLIENT: D VIVID CONSULTANT</span>
-              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4', 'Social Reel', 'AI Engineer & Data Scientist Guidance', 'Retention-optimized short-form edit tailored for Instagram Reels with hook pacing.')">
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4', 'Social Reel', 'AI Engineer & Data Scientist Guidance', 'Retention-optimized short-form edit tailored for Instagram Reels with hook pacing.')">
                 <span>Cinema Mode</span>
               </button>
             </div>
@@ -1684,6 +1372,8 @@
         <div class="video-card-small">
           <div class="video-frame-container">
             <video controls playsinline webkit-playsinline preload="metadata">
+              <source src="3d_project.mp4" type="video/mp4" />
+              <source src="./3d_project.mp4" type="video/mp4" />
               <source src="assets/videos/3d_project.mp4" type="video/mp4" />
               <source src="assets/videos/3d_project.mov" type="video/mp4" />
               <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4" />
@@ -1697,7 +1387,7 @@
             </div>
             <div class="video-meta-footer">
               <span>STUDIO PROJECT</span>
-              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/3d_project.mp4', '3D VFX', '3D Camera Tracking & VFX', 'Advanced camera solve, volumetric lighting, and particle dynamics compositing.')">
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('3d_project.mp4', '3D VFX', '3D Camera Tracking & VFX', 'Advanced camera solve, volumetric lighting, and particle dynamics compositing.')">
                 <span>Cinema</span>
               </button>
             </div>
@@ -1708,6 +1398,8 @@
         <div class="video-card-small">
           <div class="video-frame-container">
             <video controls playsinline webkit-playsinline preload="metadata">
+              <source src="Timeline_1.mp4" type="video/mp4" />
+              <source src="./Timeline_1.mp4" type="video/mp4" />
               <source src="assets/videos/Timeline_1.mp4" type="video/mp4" />
               <source src="assets/videos/Timeline_1.mov" type="video/mp4" />
               <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4" type="video/mp4" />
@@ -1721,7 +1413,7 @@
             </div>
             <div class="video-meta-footer">
               <span>SHOWREEL</span>
-              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/Timeline_1.mp4', 'Showreel', 'Director Cut Showreel', 'Dynamic match-cutting, rhythmic timeline pacing, and DaVinci Resolve color grading.')">
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('Timeline_1.mp4', 'Showreel', 'Director Cut Showreel', 'Dynamic match-cutting, rhythmic timeline pacing, and DaVinci Resolve color grading.')">
                 <span>Cinema</span>
               </button>
             </div>
@@ -1732,6 +1424,8 @@
         <div class="video-card-small">
           <div class="video-frame-container">
             <video controls playsinline webkit-playsinline preload="metadata">
+              <source src="Documentry_work.mp4" type="video/mp4" />
+              <source src="./Documentry_work.mp4" type="video/mp4" />
               <source src="assets/videos/Documentry_work.mp4" type="video/mp4" />
               <source src="assets/videos/Documentry_work.mov" type="video/mp4" />
               <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4" />
@@ -1745,7 +1439,7 @@
             </div>
             <div class="video-meta-footer">
               <span>CLIENT: G7EDU</span>
-              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/Documentry_work.mp4', 'Documentary', 'Human Stories & Journeys', 'Emotional story pacing with natural lighting color grades for G7Edu Global campaigns.')">
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('Documentry_work.mp4', 'Documentary', 'Human Stories & Journeys', 'Emotional story pacing with natural lighting color grades for G7Edu Global campaigns.')">
                 <span>Cinema</span>
               </button>
             </div>
@@ -1756,6 +1450,8 @@
         <div class="video-card-large">
           <div class="video-frame-container">
             <video controls playsinline webkit-playsinline preload="metadata">
+              <source src="148-Hindi-Staff_Video-.mp4" type="video/mp4" />
+              <source src="./148-Hindi-Staff_Video-.mp4" type="video/mp4" />
               <source src="assets/videos/148-Hindi-Staff_Video-.mp4" type="video/mp4" />
               <source src="assets/videos/148-Hindi-Staff_Video-.mov" type="video/mp4" />
               <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4" />
@@ -1769,7 +1465,7 @@
             </div>
             <div class="video-meta-footer">
               <span>CORPORATE</span>
-              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/148-Hindi-Staff_Video-.mp4', 'Corporate Video', 'Corporate Staff & Brand Orientation (Part 1)', 'Multi-speaker voice audio balancing, professional lower-thirds, and clean corporate brand pacing.')">
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('148-Hindi-Staff_Video-.mp4', 'Corporate Video', 'Corporate Staff & Brand Orientation (Part 1)', 'Multi-speaker voice audio balancing, professional lower-thirds, and clean corporate brand pacing.')">
                 <span>Cinema Mode</span>
               </button>
             </div>
@@ -1780,6 +1476,8 @@
         <div class="video-card-large">
           <div class="video-frame-container">
             <video controls playsinline webkit-playsinline preload="metadata">
+              <source src="155-Hindi-Staff_Video-.mp4" type="video/mp4" />
+              <source src="./155-Hindi-Staff_Video-.mp4" type="video/mp4" />
               <source src="assets/videos/155-Hindi-Staff_Video-.mp4" type="video/mp4" />
               <source src="assets/videos/155-Hindi-Staff_Video-.mov" type="video/mp4" />
               <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" type="video/mp4" />
@@ -1793,7 +1491,7 @@
             </div>
             <div class="video-meta-footer">
               <span>EDUCATIONAL</span>
-              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('assets/videos/155-Hindi-Staff_Video-.mp4', 'Educational Guidance', 'International Student Orientation (Part 2)', 'Bilingual Hindi/English pacing with animated highlight boxes and sound effects.')">
+              <button class="btn-play-modal-trigger" onclick="openCinemaModalBySrc('155-Hindi-Staff_Video-.mp4', 'Educational Guidance', 'International Student Orientation (Part 2)', 'Bilingual Hindi/English pacing with animated highlight boxes and sound effects.')">
                 <span>Cinema Mode</span>
               </button>
             </div>
@@ -2082,7 +1780,12 @@
           company: "d-vivid.consultant",
           title: "AI Engineer & Global Education Ads",
           desc: "Dynamic retention-focused editing with kinetic typography, sound effects & pacing.",
-          videoSrc: "assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4",
+          videoSrc: "trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4",
+          altSources: [
+            "trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov (1).mp4",
+            "assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4",
+            "assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov (1).mp4"
+          ],
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
           cardClass: "card-anisotropic-metal",
           hasGlint: true,
@@ -2094,7 +1797,11 @@
           company: "piyushyadav.studio",
           title: "High-Conversion Commercial & Study Ads",
           desc: "Produced for D Vivid Consultant. Kinetic typography, international study campaigns & dynamic sound design.",
-          videoSrc: "assets/videos/295-Hindi-Germany.mp4",
+          videoSrc: "295-Hindi-Germany.mp4",
+          altSources: [
+            "assets/videos/295-Hindi-Germany.mp4",
+            "assets/videos/295-Hindi-Germany.mov"
+          ],
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4",
           cardClass: "card-focus-violet",
           hasGlint: false,
@@ -2106,7 +1813,11 @@
           company: "motion.compositing",
           title: "3D Camera Tracking & Motion Graphics",
           desc: "Complex 3D camera tracking, volumetric lighting, and particle dynamics composited for high-impact reels.",
-          videoSrc: "assets/videos/3d_project.mp4",
+          videoSrc: "3d_project.mp4",
+          altSources: [
+            "assets/videos/3d_project.mp4",
+            "assets/videos/3d_project.mov"
+          ],
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
           cardClass: "card-emerald-metal",
           hasGlint: false,
@@ -2118,7 +1829,11 @@
           company: "piyush.showreel",
           title: "Director's Cut // 2026 Showreel",
           desc: "Pacing masterclass, rhythmic match-cutting, and DaVinci Resolve color grading.",
-          videoSrc: "assets/videos/Timeline_1.mp4",
+          videoSrc: "Timeline_1.mp4",
+          altSources: [
+            "assets/videos/Timeline_1.mp4",
+            "assets/videos/Timeline_1.mov"
+          ],
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
           cardClass: "card-dark-obsidian",
           hasGlint: false,
@@ -2130,7 +1845,11 @@
           company: "g7edu.global",
           title: "Human Stories & Student Journeys",
           desc: "Slow-burn emotional pacing with organic natural lighting color grades for G7Edu Global campaigns.",
-          videoSrc: "assets/videos/Documentry_work.mp4",
+          videoSrc: "Documentry_work.mp4",
+          altSources: [
+            "assets/videos/Documentry_work.mp4",
+            "assets/videos/Documentry_work.mov"
+          ],
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
           cardClass: "card-dark-obsidian",
           hasGlint: false,
@@ -2490,48 +2209,25 @@
         
         modalVideo.innerHTML = '';
         
-        let healed = false;
-        function healModalVideo() {
-          if (healed) return;
-          healed = true;
-          modalVideo.src = item.fallbackSrc;
-          modalVideo.load();
-          modalVideo.play().catch(() => {});
-        }
-
-        modalVideo.onerror = healModalVideo;
-
-        // Fallback timer: If Vercel returns 404, LFS pointer or codec stall
-        const fallbackTimer = setTimeout(() => {
-          if (!healed && (modalVideo.error || modalVideo.networkState === 3 || modalVideo.readyState === 0)) {
-            healModalVideo();
-          }
-        }, 1500);
-
-        modalVideo.onloadeddata = () => {
-          clearTimeout(fallbackTimer);
-        };
-
-        const mp4Src = document.createElement('source');
-        mp4Src.src = item.videoSrc;
-        mp4Src.type = 'video/mp4';
-
-        const movSrc = document.createElement('source');
-        movSrc.src = item.videoSrc.replace('.mp4', '.mov');
-        movSrc.type = 'video/quicktime';
-
-        const cdnSrc = document.createElement('source');
-        cdnSrc.src = item.fallbackSrc;
-        cdnSrc.type = 'video/mp4';
-
-        modalVideo.appendChild(mp4Src);
-        modalVideo.appendChild(movSrc);
-        modalVideo.appendChild(cdnSrc);
-
-        modalVideo.load();
-        modalVideo.play().catch(() => {
-          healModalVideo();
+        const candidatePaths = [
+          item.videoSrc,
+          `./${item.videoSrc}`,
+          `assets/videos/${item.videoSrc}`,
+          ...(item.altSources || []),
+          item.fallbackSrc
+        ];
+        
+        const uniquePaths = [...new Set(candidatePaths.filter(Boolean))];
+        
+        uniquePaths.forEach(srcUrl => {
+          const s = document.createElement('source');
+          s.src = srcUrl;
+          s.type = 'video/mp4';
+          modalVideo.appendChild(s);
         });
+        
+        modalVideo.load();
+        modalVideo.play().catch(() => {});
 
         if (modalTag) modalTag.textContent = item.tag;
         if (modalTitle) modalTitle.textContent = item.title;
@@ -2541,8 +2237,14 @@
       }
 
       window.openCinemaModalBySrc = function(src, tag, title, desc) {
+        const cleanName = src.replace(/^assets\/videos\//, '');
         openCinemaModal({
-          videoSrc: src,
+          videoSrc: cleanName,
+          altSources: [
+            src,
+            `assets/videos/${cleanName}`,
+            `./${cleanName}`
+          ],
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4",
           tag: tag || "Client Project",
           title: title || "Video Showcase",

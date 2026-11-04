@@ -9,7 +9,12 @@
           company: "d-vivid.consultant",
           title: "AI Engineer & Global Education Ads",
           desc: "Dynamic retention-focused editing with kinetic typography, sound effects & pacing.",
-          videoSrc: "assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4",
+          videoSrc: "trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4",
+          altSources: [
+            "trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov (1).mp4",
+            "assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mp4",
+            "assets/videos/trial_294-Hindi-AI_Engineer_or_Data_Scientist__1_.mov (1).mp4"
+          ],
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
           cardClass: "card-anisotropic-metal",
           hasGlint: true,
@@ -21,7 +26,11 @@
           company: "piyushyadav.studio",
           title: "High-Conversion Commercial & Study Ads",
           desc: "Produced for D Vivid Consultant. Kinetic typography, international study campaigns & dynamic sound design.",
-          videoSrc: "assets/videos/295-Hindi-Germany.mp4",
+          videoSrc: "295-Hindi-Germany.mp4",
+          altSources: [
+            "assets/videos/295-Hindi-Germany.mp4",
+            "assets/videos/295-Hindi-Germany.mov"
+          ],
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4",
           cardClass: "card-focus-violet",
           hasGlint: false,
@@ -33,7 +42,11 @@
           company: "motion.compositing",
           title: "3D Camera Tracking & Motion Graphics",
           desc: "Complex 3D camera tracking, volumetric lighting, and particle dynamics composited for high-impact reels.",
-          videoSrc: "assets/videos/3d_project.mp4",
+          videoSrc: "3d_project.mp4",
+          altSources: [
+            "assets/videos/3d_project.mp4",
+            "assets/videos/3d_project.mov"
+          ],
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
           cardClass: "card-emerald-metal",
           hasGlint: false,
@@ -45,7 +58,11 @@
           company: "piyush.showreel",
           title: "Director's Cut // 2026 Showreel",
           desc: "Pacing masterclass, rhythmic match-cutting, and DaVinci Resolve color grading.",
-          videoSrc: "assets/videos/Timeline_1.mp4",
+          videoSrc: "Timeline_1.mp4",
+          altSources: [
+            "assets/videos/Timeline_1.mp4",
+            "assets/videos/Timeline_1.mov"
+          ],
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
           cardClass: "card-dark-obsidian",
           hasGlint: false,
@@ -57,7 +74,11 @@
           company: "g7edu.global",
           title: "Human Stories & Student Journeys",
           desc: "Slow-burn emotional pacing with organic natural lighting color grades for G7Edu Global campaigns.",
-          videoSrc: "assets/videos/Documentry_work.mp4",
+          videoSrc: "Documentry_work.mp4",
+          altSources: [
+            "assets/videos/Documentry_work.mp4",
+            "assets/videos/Documentry_work.mov"
+          ],
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
           cardClass: "card-dark-obsidian",
           hasGlint: false,
@@ -417,48 +438,25 @@
         
         modalVideo.innerHTML = '';
         
-        let healed = false;
-        function healModalVideo() {
-          if (healed) return;
-          healed = true;
-          modalVideo.src = item.fallbackSrc;
-          modalVideo.load();
-          modalVideo.play().catch(() => {});
-        }
-
-        modalVideo.onerror = healModalVideo;
-
-        // Fallback timer: If Vercel returns 404, LFS pointer or codec stall
-        const fallbackTimer = setTimeout(() => {
-          if (!healed && (modalVideo.error || modalVideo.networkState === 3 || modalVideo.readyState === 0)) {
-            healModalVideo();
-          }
-        }, 1500);
-
-        modalVideo.onloadeddata = () => {
-          clearTimeout(fallbackTimer);
-        };
-
-        const mp4Src = document.createElement('source');
-        mp4Src.src = item.videoSrc;
-        mp4Src.type = 'video/mp4';
-
-        const movSrc = document.createElement('source');
-        movSrc.src = item.videoSrc.replace('.mp4', '.mov');
-        movSrc.type = 'video/quicktime';
-
-        const cdnSrc = document.createElement('source');
-        cdnSrc.src = item.fallbackSrc;
-        cdnSrc.type = 'video/mp4';
-
-        modalVideo.appendChild(mp4Src);
-        modalVideo.appendChild(movSrc);
-        modalVideo.appendChild(cdnSrc);
-
-        modalVideo.load();
-        modalVideo.play().catch(() => {
-          healModalVideo();
+        const candidatePaths = [
+          item.videoSrc,
+          `./${item.videoSrc}`,
+          `assets/videos/${item.videoSrc}`,
+          ...(item.altSources || []),
+          item.fallbackSrc
+        ];
+        
+        const uniquePaths = [...new Set(candidatePaths.filter(Boolean))];
+        
+        uniquePaths.forEach(srcUrl => {
+          const s = document.createElement('source');
+          s.src = srcUrl;
+          s.type = 'video/mp4';
+          modalVideo.appendChild(s);
         });
+        
+        modalVideo.load();
+        modalVideo.play().catch(() => {});
 
         if (modalTag) modalTag.textContent = item.tag;
         if (modalTitle) modalTitle.textContent = item.title;
@@ -468,8 +466,14 @@
       }
 
       window.openCinemaModalBySrc = function(src, tag, title, desc) {
+        const cleanName = src.replace(/^assets\/videos\//, '');
         openCinemaModal({
-          videoSrc: src,
+          videoSrc: cleanName,
+          altSources: [
+            src,
+            `assets/videos/${cleanName}`,
+            `./${cleanName}`
+          ],
           fallbackSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4",
           tag: tag || "Client Project",
           title: title || "Video Showcase",
